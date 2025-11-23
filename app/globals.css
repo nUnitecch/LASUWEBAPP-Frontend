@@ -3,19 +3,92 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --logo-title: linear-gradient(180deg, #6b78d8 0%, #4b5eec 100%);
+  --navlink: #585858;
+  --primary-foreground: #ffffff;
+  --primary-text: #383838;
+
+  --primary-btn: linear-gradient(180deg, #6b78d8 0%, #4b5eec 100%);
+  --secondary-btn: #383838;
+
+  --layer-backdrop: blur(1.429635763168335px);
+
+  --footer-background: #6270de;
+  --footer-border-line: #ffffff;
+  --footer-border-size: 1px;
+
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+
+  --ellipse-circle-a: #e44bec30;
+  --ellipse-circle-b: linear-gradient(
+    180deg,
+    rgba(107, 120, 216, 0.19) 0%,
+    rgba(75, 94, 236, 0.19) 100%
+  );
+  --ellipse-circle-c: linear-gradient(
+    180deg,
+    rgba(107, 120, 216, 0.19) 0%,
+    rgba(75, 94, 236, 0.19) 100%
+  );
+  --rectangle-shape: linear-gradient(
+    180deg,
+    rgba(75, 94, 236, 0.25) 0%,
+    rgba(43, 53, 134, 0.25) 100%
+  );
+  --background-line: linear-gradient(
+    90deg,
+    #ffffff 6.25%,
+    rgba(75, 94, 236, 0.06) 99.99%
+  );
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-logo-title: var(--logo-title);
+  --color-navlink: var(--navlink);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-text: var(--primary-text);
+
+  --color-primary-btn: var(--primary-btn);
+  --color-secondary-btn: var(--secondary-btn);
+
+  --color-footer: var(--footer-background);
+  --color-border-line: var(--footer-border-line);
+  --text-line-size: var(--footer-border-size);
+
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+
+  --color-ellipse-a: var(--ellipse-circle-a);
+  --color-ellipse-b: var(--ellipse-circle-b);
+  --color-ellipse-c: var(--ellipse-circle-c);
+
+  --color-rectangle-shape: var(--rectangle-shape);
+  --color-background-line: var(--background-line);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --primary: #38bdf8;
+    --primary-foreground: #0a0a0a;
+    --secondary: #94a3b8;
+    --accent: #a78bfa;
+    --muted: #0f172a;
+    --border: #1f2937;
+    --glass: rgba(255, 255, 255, 0.04);
+
+    --success: #34d399;
+    --error: #f97066;
+    --warning: #fbbf24;
   }
 }
 
@@ -24,3 +97,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =========== DON'T REMOVE =============== */
+/* --color-secondary: var(--secondary); */
+/* --color-accent: var(--accent); */
+/* --color-muted: var(--muted); */
+/* --color-border: var(--border); */
+/* --color-glass: var(--glass); */
+
+/* --font-sans: var(--font-geist-sans); */
+/* --font-mono: var(--font-geist-mono); */
+/* --muted: #f1f5f9; */
+/* --border: #e6e9ee; */
+/* --glass: rgba(255, 255, 255, 0.6); */
