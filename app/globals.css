@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  --logo-title: linear-gradient(180deg, #6b78d8 0%, #4b5eec 100%);
+  --logo-title: #4b5eec;
   --navlink: #585858;
   --primary-foreground: #ffffff;
   --primary-text: #383838;
@@ -45,32 +45,28 @@
   );
 }
 
-@theme inline {
+@theme {
+  --bg-primary-btn: var(--primary-btn);
+  --bg-background-line: var(--background-line);
+  --bg-ellipse-a: var(--ellipse-circle-a);
+  --bg-ellipse-b: var(--ellipse-circle-b);
+  --bg-ellipse-c: var(--ellipse-circle-c);
+  --bg-rectangle-shape: var(--rectangle-shape);
+  
+  --color-logo-title: var(--logo-title);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
-  --color-logo-title: var(--logo-title);
   --color-navlink: var(--navlink);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-text: var(--primary-text);
-
-  --color-primary-btn: var(--primary-btn);
   --color-secondary-btn: var(--secondary-btn);
-
   --color-footer: var(--footer-background);
   --color-border-line: var(--footer-border-line);
-  --text-line-size: var(--footer-border-size);
-
   --color-success: var(--success);
   --color-error: var(--error);
   --color-warning: var(--warning);
-
-  --color-ellipse-a: var(--ellipse-circle-a);
-  --color-ellipse-b: var(--ellipse-circle-b);
-  --color-ellipse-c: var(--ellipse-circle-c);
-
-  --color-rectangle-shape: var(--rectangle-shape);
-  --color-background-line: var(--background-line);
+  
+  --text-line-size: var(--footer-border-size);
 }
 
 @media (prefers-color-scheme: dark) {
