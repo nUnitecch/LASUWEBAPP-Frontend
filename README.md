@@ -6,7 +6,7 @@
 
 1. clone repository
 
-- git clone https://github.com/nUnitecch/LASUWEBAPP-Frontend-.git
+- git clone https://github.com/nUnitecch/LASUWEBAPP-Frontend.git
 - cd LASUWEBAPP-Frontend-
 
 2. download dependencies
