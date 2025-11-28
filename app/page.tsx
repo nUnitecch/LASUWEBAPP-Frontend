@@ -1,5 +1,6 @@
 import Card from "./_components/card";
 import Header from "./_components/header";
+import About from "./_components/Home/about";
 import Hero from "./_components/Home/hero";
 
 const cardDetails = [
@@ -35,6 +36,7 @@ export default function Home() {
           <Card details={card} />
         ))}
       </section>
+      <About />
     </div>
   );
 }
