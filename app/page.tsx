@@ -1,5 +1,6 @@
 import Card from "./_components/card";
 import Header from "./_components/header";
+import Hero from "./_components/Home/hero";
 
 const cardDetails = [
   {
@@ -28,7 +29,7 @@ export default function Home() {
   return (
     <div className="bg-background">
       <Header />
-
+      <Hero />
       <section className="p-4 grid grid-cols-2 gap-5">
         {cardDetails.map((card) => (
           <Card details={card} />
