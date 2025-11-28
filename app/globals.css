@@ -114,6 +114,10 @@ body {
   color: var(--foreground);
 }
 
+p {
+  font-size: 16px;
+}
+
 /* =========== DON'T REMOVE =============== */
 /* --color-secondary: var(--secondary); */
 /* --color-accent: var(--accent); */

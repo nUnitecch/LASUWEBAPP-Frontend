@@ -1,5 +1,6 @@
 import AboutCard from "./aboutCard";
 import { aboutCardInfo } from "@/app/data/about";
+import FAQ from "./FAQ";
 
 export default function About() {
   return (
@@ -10,9 +11,7 @@ export default function About() {
             <AboutCard info={card} key={id} />
           ))}
         </div>
-        <div>
-          <h3>Frequent Asked Questions</h3>
-        </div>
+        <FAQ />
       </div>
     </section>
   );
