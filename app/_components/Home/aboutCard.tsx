@@ -12,19 +12,18 @@ type AboutCardType = {
 export default function AboutCard({ info }: AboutCardType) {
   return (
     <div className="about-card flex gap-[11.33px]">
-      <div className="card-desc w-[179.07px] h-[118.04px] flex-1 rounded-[5.85px] overflow-hidden p-2 shadow-md">
+      <div className="card-desc w-[179.07px] rounded-[5.85px] overflow-hidden p-2 shadow-md">
         <div>
           <h2 className="text-[17px] font-bold mb-5">{info.title}</h2>
           <p className="text-[8.41px] leading-[14.5px]">{info.desc}</p>
         </div>
       </div>
-      <div className="w-[179.07px] h-[118.04px] rounded-[5.85px] flex-1 overflow-hidden">
+      <div className="w-[179.07px] rounded-[5.85px] overflow-hidden relative">
         <Image
           src={`/images/${info.image}`}
           alt={info.title}
-          width={179.07}
-          height={118.04}
-          className="object-contain"
+          fill
+          className="object-cover object-center"
         />
       </div>
     </div>
