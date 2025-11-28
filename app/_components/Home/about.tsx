@@ -10,7 +10,9 @@ export default function About() {
             <AboutCard info={card} key={id} />
           ))}
         </div>
-        <div>FAQ</div>
+        <div>
+          <h3>Frequent Asked Questions</h3>
+        </div>
       </div>
     </section>
   );
