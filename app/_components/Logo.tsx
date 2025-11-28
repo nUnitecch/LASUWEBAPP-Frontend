@@ -3,7 +3,10 @@ import Link from "next/link";
 
 export default function Logo() {
   return (
-    <Link href="/" className="flex items-center py-2 px-4 shadow-sm bg-white rounded-[8px]">
+    <Link
+      href="/"
+      className="flex items-center py-2 px-4 shadow-sm bg-white rounded-lg"
+    >
       <div className="relative size-[19.18px] mr-2">
         <Image
           src="/icons/logo.png"
