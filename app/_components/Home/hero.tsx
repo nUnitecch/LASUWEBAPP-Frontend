@@ -5,20 +5,20 @@ export default function Hero() {
     <section>
       <div className="py-4">
         <div
-          className="min-w-[402px] h-[180px] overflow-hidden relative"
+          className="min-w-[302px] h-[180px] overflow-hidden relative"
           role="bannar"
         >
           <Image
             src="/images/heroImg.jpg"
             alt="hero image"
             fill
-            className="object-cover object-center block"
+            className="object-cover object-center"
           />
         </div>
       </div>
       <div className="text-center text-primary-text px-4">
         <div>
-          <h1 className="text-[20px] text-primary-text font-bold min-w-[383px] mb-2">
+          <h1 className="text-[20px] text-primary-text font-bold min-w-[302px] mb-2">
             Your Ultimate LASU Campus Companion
           </h1>
           <p className="text-[12px] my-2">
