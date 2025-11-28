@@ -10,9 +10,9 @@ type DetailsType = {
 
 export default function Card({ details }: DetailsType) {
   return (
-    <div className="flex flex-col gap-y-[38.63px] border-[1.42px] border-[#4E7EE5] w-[169.26px] h-[169.03px] py-[15.24px] px-[6.38px] rounded-tl-[15.95px] rounded-br-[15.95px]">
+    <div className="flex flex-col gap-y-[38.63px] border-[1.42px] border-[#4E7EE5] min-w-[169.26px] h-[169.03px] py-[15.24px] px-[6.38px] rounded-tl-[15.95px] rounded-br-[15.95px]">
       <div className="self-end">
-        <div className="w-[29.06px] h-[29.06px] rounded-[14.53px] p-[4.96px] bg-logo-title flex items-center justify-center">
+        <div className="min-w-[29.06px] h-[29.06px] rounded-[14.53px] p-[4.96px] bg-logo-title flex items-center justify-center">
           <Image
             src={details.icon}
             alt="grduation cap"
