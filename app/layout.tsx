@@ -2,13 +2,10 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
-// const geist = Geist({
-//   subsets: ["latin"],
-// });
-
 const roboto = Roboto({
-  weight: "400",
   subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
