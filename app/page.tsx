@@ -32,8 +32,8 @@ export default function Home() {
       <Header />
       <Hero />
       <section className="p-4 grid grid-cols-2 gap-5">
-        {cardDetails.map((card) => (
-          <Card details={card} />
+        {cardDetails.map((card, id) => (
+          <Card details={card} key={id} />
         ))}
       </section>
       <About />

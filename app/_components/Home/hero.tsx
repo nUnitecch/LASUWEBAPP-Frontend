@@ -14,14 +14,14 @@ export default function Hero() {
           />
         </div>
       </div>
-      <div className="text-center text-primary-text">
+      <div className="text-center text-primary-text px-4">
         <div>
           <h1 className="text-[20px] text-primary-text font-bold w-[383px] mb-2">
             Your Ultimate LASU Campus Companion
           </h1>
           <p className="text-[12px] my-2">
-            The official app for Lagos State University Lorem ipsum dolor sit
-            amet, consectetur adipisicing elit.
+            The official app for Lagos State University(LASU), designed to
+            simplify your student life and keep you connected.
           </p>
           <button
             aria-label="Sign up"
@@ -32,11 +32,11 @@ export default function Hero() {
         </div>
         <div>
           <h2 className="text-[18px] font-bold">
-            Lorem ipsum dolor sit amet consectetur.
+            Everything You Need, All in One Place
           </h2>
           <p className="text-primary-text text-[12px] my-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati
-            repellendus provident iusto
+            Explore the powerful features designed to enhance your academic
+            journey and campus experience.
           </p>
         </div>
       </div>
