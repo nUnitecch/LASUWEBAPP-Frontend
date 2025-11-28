@@ -5,7 +5,7 @@ export default function Hero() {
     <section>
       <div className="py-4">
         <div
-          className="min-w-[302px] h-[180px] overflow-hidden relative"
+          className="min-w-[302px] h-[280px] overflow-hidden relative"
           role="bannar"
         >
           <Image

@@ -19,7 +19,7 @@ export default function FAQ() {
         {faqData.map((faq) => (
           <li key={faq.id} className="w-full shadow-md">
             <div className="flex w-full items-center gap-2 justify-between shadow-xs p-3">
-              <h4 className="text-[18px] font-semibold">{faq.question}</h4>
+              <h4 className="text-[16px] font-semibold">{faq.question}</h4>
               <span
                 className="px-1 inline-block"
                 onClick={() => handleToggleAnswer(faq.id)}
@@ -29,7 +29,7 @@ export default function FAQ() {
             </div>
             <p
               className={`transition-all duration-300 ${
-                showFAQAnswer === faq.id ? "h-auto p-3" : "h-0 overflow-hidden"
+                showFAQAnswer === faq.id ? "h-auto py-3 px-5" : "h-0 overflow-hidden"
               }`}
             >
               {faq.answer}
