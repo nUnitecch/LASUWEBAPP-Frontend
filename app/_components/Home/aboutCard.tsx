@@ -10,14 +10,14 @@ type AboutCardType = {
 
 export default function AboutCard({ info }: AboutCardType) {
   return (
-    <div className="about-card flex flex-col gap-[11.33px]">
+    <div className="about-card grid grid-cols-1 gap-[11.33px]">
       <div className="card-desc rounded-[5.85px] overflow-hidden p-5 shadow-md">
         <div>
           <h2 className="text-[24px] font-bold mb-5">{info.title}</h2>
           <p className="leading-[24.5px]">{info.desc}</p>
         </div>
       </div>
-      <div className="min-w-[200px] w-full rounded-[5.85px] overflow-hidden relative">
+      <div className="min-w-[200px] w-full aspect-video rounded-[5.85px] overflow-hidden relative">
         <Image
           src={`/images/${info.image}`}
           alt={info.title}
