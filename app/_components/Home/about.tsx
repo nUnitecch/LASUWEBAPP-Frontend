@@ -4,7 +4,7 @@ import FAQ from "./FAQ";
 
 export default function About() {
   return (
-    <section className="p-4">
+    <section className="px-4 py-20">
       <div>
         <div className="py-4 flex flex-col gap-10">
           {aboutCardInfo.map((card, id) => (
