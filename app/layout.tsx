@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
+
+const geist = Geist({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -19,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.className}>
+    <html lang="en" className={geist.className}>
       <body>{children}</body>
     </html>
   );
