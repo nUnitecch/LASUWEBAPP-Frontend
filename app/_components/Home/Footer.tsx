@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
       </section>
       <div className="bg-footer p-4">
-        <div className="w-[150px] mb-2">
+        <div className="w-[180px] mb-2">
           <Logo />
         </div>
         <p className="mb-5">Your Ultimate Campus Companion.</p>
