@@ -47,7 +47,7 @@ export default function Footer() {
           </li>
         </ul>
         <div>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
+          <p>Get to know when other features are open.</p>
           <div className="my-4 flex">
             <input
               type="text"
