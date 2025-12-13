@@ -1,6 +1,6 @@
 "use client";
 
-import { faqData } from "@/app/data/faqs";
+import { faqData } from "@/data/faqs";
 import { useState } from "react";
 
 export default function FAQ() {

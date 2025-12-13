@@ -11,6 +11,7 @@ export default function Logo() {
         <Image
           src="/icons/logo.png"
           alt="logo icon"
+          
           fill
           className="object-contain"
         />

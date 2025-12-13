@@ -1,4 +1,4 @@
-import { cardDetails } from "@/app/data/card";
+import { cardDetails } from "@/data/card";
 import Card from "./card";
 
 export default function CardSection() {
