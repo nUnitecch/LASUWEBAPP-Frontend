@@ -1,5 +1,5 @@
-import { cardDetails } from "@/app/data/card";
-import Card from "./card";
+import { cardDetails } from "@/data/card";
+import Card from "./Card";
 
 export default function CardSection() {
   return (

@@ -1,8 +1,8 @@
-import Header from "./_components/header";
-import About from "./_components/Home/about";
-import CardSection from "./_components/Home/cardSection";
-import Footer from "./_components/Home/Footer";
-import Hero from "./_components/Home/hero";
+import Header from "@/components/Header";
+import About from "@/components/Home/About";
+import CardSection from "@/components/Home/CardSection";
+import Hero from "@/components/Home/Hero";
+import Footer from "@/components/Home/Footer";
 
 export default function Home() {
   return (
