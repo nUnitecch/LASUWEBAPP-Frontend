@@ -7,26 +7,28 @@ export type FAQItem = {
 export const faqData: FAQItem[] = [
   {
     id: 1,
-    question: "What is your mission?",
+    question: "What is my LASU APP?",
     answer:
-      "Our mission is to deliver high-quality solutions that empower businesses and individuals.",
+      "My Lasu is a digital platform designed to help LASU students access their academic tools,A timetable, study materials, campus updates, and opportunities all in one place.",
   },
   {
     id: 2,
-    question: "How can I contact support?",
-    answer:
-      "You can reach our support team via email at support@example.com or through the contact form.",
+    question: "Who can use my LASU APP?",
+    answer: "All LASU student.",
   },
   {
     id: 3,
-    question: "Do you offer refunds?",
-    answer:
-      "Yes, we offer refunds within 30 days of purchase if you’re not satisfied with our product.",
+    question: "Is my LASU APP free?",
+    answer: "Yes",
   },
   {
     id: 4,
-    question: "Is there a free trial?",
-    answer:
-      "Absolutely! We provide a 14-day free trial so you can explore all features before committing.",
+    question: "What do I do inside the Academic Hub?",
+    answer: "Study smarter with your timetable and course materials organized.",
+  },
+  {
+    id: 5,
+    question: "Is my information secure?",
+    answer: "Yes",
   },
 ];
