@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/header/index";
 import About from "@/components/Home/About";
 import CardSection from "@/components/Home/CardSection";
 import Hero from "@/components/Home/Hero";
