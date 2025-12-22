@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="py-4">
         <div
           className="min-w-[302px] h-[280px] overflow-hidden relative"
-          role="bannar"
+          role="banner"
         >
           <Image
             src="/images/heroImg.jpg"
@@ -32,7 +32,7 @@ export default function Hero() {
             Sign up
           </button>
         </div>
-        <div className="mt2">
+        <div className="mt-2">
           <h2 className="text-[22px] font-bold">
             Everything You Need, All in One Place
           </h2>

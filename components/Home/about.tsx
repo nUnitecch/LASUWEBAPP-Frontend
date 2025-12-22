@@ -1,5 +1,5 @@
 import { aboutCardInfo } from "@/data/about";
-import AboutCard from "./aboutCard";
+import AboutCard from "./AboutCard";
 import FAQ from "./FAQ";
 
 export default function About() {
