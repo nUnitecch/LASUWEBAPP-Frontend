@@ -42,10 +42,10 @@ Adjust scripts based on your package.json.
 
 ## Project structure (important files)
 
+- components/Logo.tsx — logo component ([open file](components/Logo.tsx))
+- components/header/index.tsx — header component ([open file](components/header/index.tsx))
 - app/layout.tsx — global layout, font import and metadata ([open file](app/layout.tsx))
 - app/page.tsx — home page entry ([open file](app/page.tsx))
-- app/\_components/Logo.tsx — logo component ([open file](app/_components/Logo.tsx))
-- app/\_components/header/index.tsx — header component ([open file](app/_components/header/index.tsx))
 
 ## Contributing
 
