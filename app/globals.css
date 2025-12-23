@@ -4,9 +4,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --background: #ffffff;
+  --foreground: #171717;
+
   --logo-title: #4b5eec;
   --navlink: #585858;
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: #ffffff;
   --primary-text: #383838;
   --border-color: #4e7ee5;
 
@@ -187,6 +190,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
     --primary: #38bdf8;
     --primary-foreground: #0a0a0a;
     --secondary: #94a3b8;
@@ -227,6 +233,11 @@
 html,
 body {
   width: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
 }
 
 p {
