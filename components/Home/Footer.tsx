@@ -5,7 +5,7 @@ import Logo from "../Logo";
 export default function Footer() {
   return (
     <footer className="text-background">
-      <section className="min-w-[200px] h-[200px] relative flex items-center justify-center">
+      <section className="min-w-50 h-50 relative flex items-center justify-center">
         <div className="footer-overlay"></div>
         <Image
           src="/images/footerImage.jpg"
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
       </section>
       <div className="bg-footer p-4">
-        <div className="w-[180px] mb-2">
+        <div className="w-45 mb-2">
           <Logo />
         </div>
         <p className="mb-5">Your Ultimate Campus Companion.</p>
