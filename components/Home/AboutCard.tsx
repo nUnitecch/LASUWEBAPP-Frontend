@@ -1,0 +1,30 @@
+import Image from "next/image";
+
+type AboutCardType = {
+  info: {
+    title: string;
+    desc: string;
+    image: string;
+  };
+};
+
+export default function AboutCard({ info }: AboutCardType) {
+  return (
+    <div className="about-card grid grid-cols-1 gap-[11.33px]">
+      <div className="card-desc rounded-[5.85px] overflow-hidden p-5 shadow-md">
+        <div>
+          <h2 className="text-[24px] font-bold mb-5">{info.title}</h2>
+          <p className="leading-[24.5px]">{info.desc}</p>
+        </div>
+      </div>
+      <div className="min-w-50 w-full aspect-video rounded-[5.85px] overflow-hidden relative">
+        <Image
+          src={`/images/${info.image}`}
+          alt={info.title}
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+    </div>
+  );
+}
