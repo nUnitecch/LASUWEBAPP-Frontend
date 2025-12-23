@@ -17,7 +17,7 @@ export default function AboutCard({ info }: AboutCardType) {
           <p className="leading-[24.5px]">{info.desc}</p>
         </div>
       </div>
-      <div className="min-w-[200px] w-full aspect-video rounded-[5.85px] overflow-hidden relative">
+      <div className="min-w-50 w-full aspect-video rounded-[5.85px] overflow-hidden relative">
         <Image
           src={`/images/${info.image}`}
           alt={info.title}
