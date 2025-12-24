@@ -4,14 +4,7 @@ export default function Hero() {
   return (
     <section>
       <div className="py-4">
-<<<<<<< HEAD
         <div className="min-w-75.5 h-70 overflow-hidden relative" role="banner">
-=======
-        <div
-          className="min-w-[302px] h-[280px] overflow-hidden relative"
-          role="banner"
-        >
->>>>>>> 85ac29b95e7955aa62716831c33564d551415c76
           <Image
             src="/images/heroImg.jpg"
             alt="hero image"
@@ -22,11 +15,7 @@ export default function Hero() {
       </div>
       <div className="text-center text-primary-text px-4">
         <div>
-<<<<<<< HEAD
           <h1 className="text-[28px] text-primary-text font-bold min-w-75.5 mb-2">
-=======
-          <h1 className="text-[28px] text-primary-text font-bold min-w-[302px] mb-2">
->>>>>>> 85ac29b95e7955aa62716831c33564d551415c76
             Your Ultimate LASU Campus Companion
           </h1>
           <p className="text-[16px] my-2">
