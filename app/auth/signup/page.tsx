@@ -151,11 +151,11 @@ export default function Signup() {
         </div>
         <div className="flex w-full">
           {steps > 1 && (
-            <Button className="btn-secondary" onClick={prev}>
+            <Button type="button" className="btn-secondary" onClick={prev}>
               Prev
             </Button>
           )}
-          <Button className="btn-primary ml-auto" onClick={next}>
+          <Button type="button" className="btn-primary ml-auto" onClick={next}>
             Next
           </Button>
         </div>
