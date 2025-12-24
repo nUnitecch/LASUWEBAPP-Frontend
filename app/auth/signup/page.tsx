@@ -14,22 +14,17 @@ import {
 } from "@/components/ui/select";
 import FormField from "@/components/Forms/FormField";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-// import { log } from "node:console";
 
 export default function Signup() {
   const [steps, setSteps] = useState(1);
-  const { handleSubmit } = useForm();
 
   const next = () => {
     if (steps < 2) setSteps(steps + 1);
   };
-
+  
   const prev = () => {
     if (steps > 1) setSteps(steps - 1);
   };
-
-  const onSubmit = () => console.log("Form submitted!", steps);
 
   return (
     <div className="border w-[95%]">
@@ -41,7 +36,7 @@ export default function Signup() {
         </div>
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
       </div>
-      <form className="m-5" onSubmit={handleSubmit(onSubmit)}>
+      <form className="m-5">
         <div className="">
           {steps === 1 && (
             <div className="fields flex flex-col gap-2.5 mb-5">
