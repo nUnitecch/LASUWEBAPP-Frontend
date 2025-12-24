@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Logo from "../Logo";
 
 export default function Header() {
@@ -9,9 +10,12 @@ export default function Header() {
         <span className="block w-6 bg-secondary-btn h-0.5 rounded"></span>
       </div>
       <Logo />
-      <button className="bg-secondary-btn text-white rounded-[5.11px] px-[12.78px] py-[7.67px]">
+      <Link
+        href="/auth/signin"
+        className="bg-secondary-btn text-white rounded-[5.11px] px-[12.78px] py-[7.67px]"
+      >
         Sign in
-      </button>
+      </Link>
     </div>
   );
 }
