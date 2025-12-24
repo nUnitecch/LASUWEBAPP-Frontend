@@ -14,7 +14,7 @@ import {
 
 export default function Signup() {
   return (
-    <div className="border w-[95%]">
+    <div className="w-[95%]">
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
