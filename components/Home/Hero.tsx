@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -22,12 +23,13 @@ export default function Hero() {
             The official app for Lagos State University(LASU), designed to
             simplify your student life and keep you connected.
           </p>
-          <button
+          <Link
+            href="auth/signup"
             aria-label="Sign up"
-            className="btn-primary rounded-[5.11px] px-[12.78px] py-[7.67px] my-4"
+            className="inline-block btn-primary rounded-[5.11px] px-[12.78px] py-[7.67px] my-4"
           >
             Sign up
-          </button>
+          </Link>
         </div>
         <div className="mt-2">
           <h2 className="text-[22px] font-bold">

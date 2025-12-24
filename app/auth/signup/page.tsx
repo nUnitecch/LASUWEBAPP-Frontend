@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import FormField from "@/components/Forms/FormField";
 
 export default function Signup() {
   return (
@@ -25,30 +26,18 @@ export default function Signup() {
       </div>
       <form className="m-5">
         <div className="fields flex flex-col gap-2.5 mb-5">
-          <div className="inputField">
-            <label htmlFor="fullname" className="block mb-2">
-              Fullname
-            </label>
-            <input
-              type="text"
-              id="fullname"
-              name="fullname"
-              placeholder="John Doe"
-              className="border w-full h-10 rounded px-2"
-            />
-          </div>
-          <div className="inputField">
-            <label htmlFor="email" className="block mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="johndoe@example.com"
-              className="border w-full h-10 rounded px-2"
-            />
-          </div>
+          <FormField
+            label="Fullname"
+            type="text"
+            name="fullname"
+            placeholder="John Doe"
+          />
+          <FormField
+            label="Email"
+            type="email"
+            name="email"
+            placeholder="johndoe@example.com"
+          />
           <Select>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select your gender" />
