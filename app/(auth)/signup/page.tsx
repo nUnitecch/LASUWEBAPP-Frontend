@@ -1,3 +1,5 @@
+"use-client";
+
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 import {
@@ -48,10 +50,10 @@ export default function Signup() {
             />
           </div>
           <Select>
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Select your gender" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="w-full">
               <SelectGroup>
                 <SelectLabel>Genders</SelectLabel>
                 <SelectItem value="m">Male</SelectItem>
