@@ -3,31 +3,30 @@
 import { useState } from "react";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import FormField from "@/components/Forms/FormField";
 import { Button } from "@/components/ui/button";
+import FormSelect from "@/components/Forms/FormSelect";
+import {
+  campusOptions,
+  departmentOptions,
+  facultyOptions,
+  genderOptions,
+  levelOptions,
+} from "@/lib/schemas/authSchema";
 
 export default function Signup() {
   const [steps, setSteps] = useState(1);
 
   const next = () => {
-    if (steps < 2) setSteps(steps + 1);
+    if (steps < 4) setSteps(steps + 1);
   };
-  
+
   const prev = () => {
     if (steps > 1) setSteps(steps - 1);
   };
 
   return (
-    <div className="border w-[95%]">
+    <div className="w-[95%]">
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
@@ -36,7 +35,7 @@ export default function Signup() {
         </div>
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
       </div>
-      <form className="m-5">
+      <form className="m-5" onSubmit={(e) => e.preventDefault()}>
         <div className="">
           {steps === 1 && (
             <div className="fields flex flex-col gap-2.5 mb-5">
@@ -52,18 +51,13 @@ export default function Signup() {
                 name="email"
                 placeholder="johndoe@example.com"
               />
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select your gender" />
-                </SelectTrigger>
-                <SelectContent className="w-full">
-                  <SelectGroup>
-                    <SelectLabel>Genders</SelectLabel>
-                    <SelectItem value="m">Male</SelectItem>
-                    <SelectItem value="f">Female</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <FormSelect
+                placeholder="Select your gender"
+                label="Gender"
+                groupLabel="Genders"
+                name="gender"
+                options={genderOptions}
+              />
             </div>
           )}
           {steps === 2 && (
@@ -74,68 +68,84 @@ export default function Signup() {
                 name="matricNo"
                 placeholder="e.g 220673278"
               />
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Campus" />
-                </SelectTrigger>
-                <SelectContent className="w-full">
-                  <SelectGroup>
-                    <SelectLabel>Campuses</SelectLabel>
-                    <SelectItem value="ojo" aria-selected>
-                      Ojo campus (main)
-                    </SelectItem>
-                    <SelectItem value="epe">Epe campus</SelectItem>
-                    <SelectItem value="ikeja">Ikeja campus</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Faculty" />
-                </SelectTrigger>
-                <SelectContent className="w-full">
-                  <SelectGroup>
-                    <SelectLabel>Faculties</SelectLabel>
-                    <SelectItem value="sci">Science</SelectItem>
-                    <SelectItem value="edu">Education</SelectItem>
-                    <SelectItem value="mass">Mass communication</SelectItem>
-                    <SelectItem value="art">Art</SelectItem>
-                    <SelectItem value="fms">Management Science</SelectItem>
-                    <SelectItem value="fss">Social Science</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Department" />
-                </SelectTrigger>
-                <SelectContent className="w-full">
-                  <SelectGroup>
-                    <SelectLabel>Departments</SelectLabel>
-                    <SelectItem value="csc">comp science</SelectItem>
-                    <SelectItem value="math">Mathematics</SelectItem>
-                    <SelectItem value="chem">Chemistry</SelectItem>
-                    <SelectItem value="bio">Biology</SelectItem>
-                    <SelectItem value="eng">English</SelectItem>
-                    <SelectItem value="acc">Accounting</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Level" />
-                </SelectTrigger>
-                <SelectContent className="w-full">
-                  <SelectGroup>
-                    <SelectLabel>Levels</SelectLabel>
-                    <SelectItem value="100">100L</SelectItem>
-                    <SelectItem value="200">200L</SelectItem>
-                    <SelectItem value="300">300L</SelectItem>
-                    <SelectItem value="400">400L</SelectItem>
-                    <SelectItem value="500">500L</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <FormSelect
+                label="Campus"
+                groupLabel="Campuses"
+                name="campus"
+                placeholder="Select Campus"
+                options={campusOptions}
+              />
+              <FormSelect
+                label="Faculty"
+                groupLabel="Faculties"
+                name="faculty"
+                placeholder="Select Faculty"
+                options={facultyOptions}
+              />
+              <FormSelect
+                label="Department"
+                groupLabel="Departments"
+                name="department"
+                placeholder="Select Department"
+                options={departmentOptions}
+              />
+              <FormSelect
+                label="Level"
+                groupLabel="Levels"
+                name="level"
+                placeholder="Select Level"
+                options={levelOptions}
+              />
+            </div>
+          )}
+          {steps === 3 && (
+            <div className="fields flex flex-col gap-2.5 mb-5">
+              <FormField
+                name="whatsappNumber"
+                type="tel"
+                label="WhatsApp Number"
+                placeholder="e.g. 08012345678"
+              />
+              <FormField
+                name="callingNumber"
+                type="tel"
+                label="Calling Number"
+                placeholder="e.g. 08012345678"
+              />
+              <FormField
+                name="address"
+                type="textarea"
+                label="Address"
+                placeholder="Enter your address"
+              />
+              <FormField
+                type="text"
+                name="guidanceName"
+                label="Guidance Name"
+                placeholder="Guardian's name"
+              />
+              <FormField
+                name="guidanceNumber"
+                type="tel"
+                label="Guidance Number"
+                placeholder="e.g. 08012345678"
+              />
+            </div>
+          )}
+          {steps === 4 && (
+            <div className="fields flex flex-col gap-2.5 mb-5">
+              <FormField
+                name="password"
+                type="password"
+                label="Password"
+                placeholder="Enter password"
+              />
+              <FormField
+                name="confirmPassword"
+                type="password"
+                label="Confirm Password"
+                placeholder="Confirm password"
+              />
             </div>
           )}
         </div>
