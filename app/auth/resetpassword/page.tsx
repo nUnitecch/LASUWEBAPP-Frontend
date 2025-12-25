@@ -1,8 +1,12 @@
+"use client";
+
 import FormField from "@/components/Forms/FormField";
 import { KeyRound } from "lucide-react";
 import Link from "next/link";
+import { FormProvider, useForm } from "react-hook-form";
 
 export default function PasswordResetPage() {
+  const methods = useForm({ defaultValues: {} });
   return (
     <div className="w-[95%]">
       <div className="text-center">
@@ -16,12 +20,14 @@ export default function PasswordResetPage() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <form className="m-5">
-        <div className="fields flex flex-col gap-3 mb-5">
-          <FormField name="username" label="Username" placeholder="JohnDoe" />
-        </div>
-        <Link href="/auth/signup">Sign up</Link>
-      </form>
+      <FormProvider {...methods}>
+        <form className="m-5">
+          <div className="fields flex flex-col gap-3 mb-5">
+            <FormField name="username" label="Username" placeholder="JohnDoe" />
+          </div>
+          <Link href="/auth/signup">Sign up</Link>
+        </form>
+      </FormProvider>
     </div>
   );
 }
