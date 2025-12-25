@@ -1,3 +1,4 @@
+import FormField from "@/components/Forms/FormField";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 
@@ -16,8 +17,16 @@ export default function Login() {
         </p>
       </div>
       <form className="m-5">
-        <div className="fields"></div>
-        <Link href="/signin"></Link>
+        <div className="fields flex flex-col gap-3 mb-5">
+          <FormField name="username" label="Username" placeholder="JohnDoe" />
+          <FormField
+            name="password"
+            type="password"
+            label="Password"
+            placeholder="Enter password"
+          />
+        </div>
+        <Link href="/auth/signup">Sign up</Link>
       </form>
     </div>
   );

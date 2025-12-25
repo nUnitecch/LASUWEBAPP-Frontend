@@ -1,3 +1,6 @@
+"use client";
+
+import { useFormContext } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -23,12 +26,20 @@ export default function FormSelect({
   options,
   groupLabel,
 }: FormSelectProps) {
+  const {
+    register,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
+
+  const error = errors[name]?.message as string;
+
   return (
     <div>
       <label htmlFor={name} className="block mb-1">
         {label}
       </label>
-      <Select>
+      <Select onValueChange={(value) => setValue(name, value)}>
         <SelectTrigger className="w-full">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
@@ -43,7 +54,8 @@ export default function FormSelect({
           </SelectGroup>
         </SelectContent>
       </Select>
-      <input type="hidden" name={name} />
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      <input type="hidden" {...register(name)} />
     </div>
   );
 }
