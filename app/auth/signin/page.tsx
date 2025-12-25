@@ -1,7 +1,25 @@
+"use client";
+
+import FormField from "@/components/Forms/FormField";
+import { FormProvider, useForm } from "react-hook-form";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-export default function Login() {
+export default function SigninPage() {
+  const methods = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
+
+  const onSubmit = (data: any) => console.log(data);
+
   return (
     <div className="w-[95%]">
       <div className="text-center">
@@ -15,10 +33,29 @@ export default function Login() {
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
       </div>
-      <form className="m-5">
-        <div className="fields"></div>
-        <Link href="/signin"></Link>
-      </form>
+      <FormProvider {...methods}>
+        <form className="m-5" onSubmit={handleSubmit(onSubmit)}>
+          <div className="fields flex flex-col gap-3 mb-5">
+            <FormField
+              name="email"
+              label="Email"
+              placeholder="Johndoe@example.com"
+            />
+            <FormField
+              name="password"
+              type="password"
+              label="Password"
+              placeholder="Enter password"
+            />
+            <Button type="submit" className="btn-primary mx-auto">
+              {isSubmitting ? "Signing in..." : "Sign in"}
+            </Button>
+          </div>
+          <p className="text-center">
+            Don't have an account ? <Link href="/auth/signup">Sign up</Link>
+          </p>
+        </form>
+      </FormProvider>
     </div>
   );
 }
