@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { UserRound } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import Link from "next/link";
 import FormField from "@/components/Forms/FormField";
 import { Button } from "@/components/ui/button";
@@ -16,9 +16,8 @@ import {
 } from "@/lib/schemas/authSchema";
 import { FormProvider, useForm } from "react-hook-form";
 
-export default function Signup() {
+export default function SignupPage() {
   const [steps, setSteps] = useState(1);
-
   const methods = useForm<SignupFormData>({
     defaultValues: {
       fullname: "",
@@ -40,28 +39,35 @@ export default function Signup() {
     },
   });
 
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
+
   const next = () => {
+    console.log(steps);
+
     if (steps < 4) setSteps(steps + 1);
   };
 
-  const prev = () => {
+  const previous = () => {
     if (steps > 1) setSteps(steps - 1);
   };
 
-  const onSubmit = (data: any) => console.log(data); // FormEventHandler<HTMLFormElement
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <div className="w-[95%]">
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
-            <UserRound className="size-full" />
+            <GraduationCap className="size-full" />
           </div>
         </div>
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
       </div>
       <FormProvider {...methods}>
-        <form className="m-5" onSubmit={methods.handleSubmit(onSubmit)}>
+        <form className="m-5" onSubmit={handleSubmit(onSubmit)}>
           <>
             {steps === 1 && (
               <div className="fields flex flex-col gap-5 mb-5">
@@ -177,21 +183,41 @@ export default function Signup() {
           </>
           <div className="flex w-full">
             {steps > 1 && (
-              <Button type="button" className="btn-secondary" onClick={prev}>
+              <Button
+                type="button"
+                className="btn-secondary"
+                onClick={previous}
+              >
                 Prev
               </Button>
             )}
-            {steps !== 4 ? (
-              <Button className="btn-primary ml-auto">Create account</Button>
-            ) : (
+            <Button
+              type={steps < 4 ? "button" : "submit"}
+              className="btn-primary ml-auto"
+              onClick={steps < 4 ? next : onSubmit}
+            >
+              {steps < 4 ? "Next" : isSubmitting ? "Submitting..." : "Submit"}
+            </Button>
+            {/* <div className="w-full">
               <Button
                 type="button"
-                className="btn-primary ml-auto"
+                className={`btn-primary ml-auto ${
+                  steps < 4 ? "block" : "hidden"
+                }`}
                 onClick={next}
               >
                 Next
               </Button>
-            )}
+              <Button
+                type="submit"
+                className={`btn-primary ml-auto ${
+                  steps !== 4 ? "hidden" : "block"
+                }`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Create..." : "Submit"}
+              </Button>
+            </div> */}
           </div>
           <p className="text-center">
             Already have an account? <Link href="/auth/signin">Sign in</Link>
