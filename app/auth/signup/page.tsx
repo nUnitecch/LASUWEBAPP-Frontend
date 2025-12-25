@@ -45,8 +45,6 @@ export default function SignupPage() {
   } = methods;
 
   const next = () => {
-    console.log(steps);
-
     if (steps < 4) setSteps(steps + 1);
   };
 
@@ -192,32 +190,23 @@ export default function SignupPage() {
               </Button>
             )}
             <Button
-              type={steps < 4 ? "button" : "submit"}
-              className="btn-primary ml-auto"
-              onClick={steps < 4 ? next : onSubmit}
+              type="button"
+              className={`btn-primary ml-auto ${
+                steps < 4 ? "block" : "hidden"
+              }`}
+              onClick={next}
             >
-              {steps < 4 ? "Next" : isSubmitting ? "Submitting..." : "Submit"}
+              Next
             </Button>
-            {/* <div className="w-full">
-              <Button
-                type="button"
-                className={`btn-primary ml-auto ${
-                  steps < 4 ? "block" : "hidden"
-                }`}
-                onClick={next}
-              >
-                Next
-              </Button>
-              <Button
-                type="submit"
-                className={`btn-primary ml-auto ${
-                  steps !== 4 ? "hidden" : "block"
-                }`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Create..." : "Submit"}
-              </Button>
-            </div> */}
+            <Button
+              type="submit"
+              className={`btn-primary ml-auto ${
+                steps !== 4 ? "hidden" : "block"
+              }`}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Create..." : "Submit"}
+            </Button>
           </div>
           <p className="text-center">
             Already have an account? <Link href="/auth/signin">Sign in</Link>
