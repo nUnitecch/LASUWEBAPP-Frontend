@@ -45,6 +45,7 @@ export default function SignupPage() {
   } = methods;
 
   const next = () => {
+    methods.trigger();
     if (steps < 4) setSteps(steps + 1);
   };
 
@@ -52,7 +53,7 @@ export default function SignupPage() {
     if (steps > 1) setSteps(steps - 1);
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: SignupFormData) => console.log(data);
 
   return (
     <div className="w-[95%]">
@@ -74,12 +75,14 @@ export default function SignupPage() {
                   type="text"
                   name="fullname"
                   placeholder="John Doe"
+                  required
                 />
                 <FormField
                   label="Email"
                   type="email"
                   name="email"
                   placeholder="johndoe@example.com"
+                  required
                 />
                 <FormSelect
                   placeholder="Select your gender"
@@ -87,6 +90,7 @@ export default function SignupPage() {
                   groupLabel="Genders"
                   name="gender"
                   options={genderOptions}
+                  required
                 />
               </div>
             )}
@@ -97,6 +101,7 @@ export default function SignupPage() {
                   type="number"
                   name="matricNo"
                   placeholder="e.g 220673278"
+                  required
                 />
                 <FormSelect
                   label="Campus"
@@ -104,6 +109,7 @@ export default function SignupPage() {
                   name="campus"
                   placeholder="Select Campus"
                   options={campusOptions}
+                  required
                 />
                 <FormSelect
                   label="Faculty"
@@ -111,6 +117,7 @@ export default function SignupPage() {
                   name="faculty"
                   placeholder="Select Faculty"
                   options={facultyOptions}
+                  required
                 />
                 <FormSelect
                   label="Department"
@@ -118,6 +125,7 @@ export default function SignupPage() {
                   name="department"
                   placeholder="Select Department"
                   options={departmentOptions}
+                  required
                 />
                 <FormSelect
                   label="Level"
@@ -125,6 +133,7 @@ export default function SignupPage() {
                   name="level"
                   placeholder="Select Level"
                   options={levelOptions}
+                  required
                 />
               </div>
             )}
@@ -147,6 +156,7 @@ export default function SignupPage() {
                   type="textarea"
                   label="Address"
                   placeholder="Enter your address"
+                  required
                 />
                 <FormField
                   type="text"
@@ -169,12 +179,14 @@ export default function SignupPage() {
                   type="password"
                   label="Password"
                   placeholder="Enter password"
+                  required
                 />
                 <FormField
                   name="confirmPassword"
                   type="password"
                   label="Confirm Password"
                   placeholder="Confirm password"
+                  required
                 />
               </div>
             )}

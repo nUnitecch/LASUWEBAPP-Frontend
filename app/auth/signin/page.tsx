@@ -40,12 +40,14 @@ export default function SigninPage() {
               name="email"
               label="Email"
               placeholder="Johndoe@example.com"
+              required
             />
             <FormField
               name="password"
               type="password"
               label="Password"
               placeholder="Enter password"
+              required
             />
             <Button type="submit" className="btn-primary mx-auto">
               {isSubmitting ? "Signing in..." : "Sign in"}

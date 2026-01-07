@@ -7,6 +7,7 @@ interface FormFieldProps {
   type?: string;
   placeholder: string;
   label: string;
+  required?: boolean;
 }
 
 export default function FormField({
@@ -14,6 +15,7 @@ export default function FormField({
   type = "text",
   placeholder,
   label,
+  required = false,
 }: FormFieldProps) {
   const {
     register,
@@ -32,7 +34,7 @@ export default function FormField({
           id={name}
           placeholder={placeholder}
           className="border w-full rounded p-2 min-h-20"
-          {...register(name)}
+          {...register(name, { required })}
         ></textarea>
       ) : (
         <input
@@ -40,7 +42,7 @@ export default function FormField({
           id={name}
           placeholder={placeholder}
           className="border w-full h-10 rounded px-2"
-          {...register(name)}
+          {...register(name, { required })}
         />
       )}
       {error && <p className="text-red-500 text-sm">{error}</p>}
