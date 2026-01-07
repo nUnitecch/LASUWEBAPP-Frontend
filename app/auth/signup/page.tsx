@@ -66,7 +66,7 @@ export default function SignupPage() {
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
       </div>
       <FormProvider {...methods}>
-        <form className="m-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
           <>
             {steps === 1 && (
               <div className="fields flex flex-col gap-5 mb-5">
