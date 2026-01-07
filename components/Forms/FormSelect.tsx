@@ -17,6 +17,7 @@ interface FormSelectProps {
   name: string;
   options: { value: string; label: string }[];
   groupLabel: string;
+  required?: boolean;
 }
 
 export default function FormSelect({
@@ -25,6 +26,7 @@ export default function FormSelect({
   name,
   options,
   groupLabel,
+  required = false,
 }: FormSelectProps) {
   const {
     register,
@@ -55,7 +57,7 @@ export default function FormSelect({
         </SelectContent>
       </Select>
       {error && <p className="text-red-500 text-sm">{error}</p>}
-      <input type="hidden" {...register(name)} />
+      <input type="hidden" {...register(name, { required })} />
     </div>
   );
 }
