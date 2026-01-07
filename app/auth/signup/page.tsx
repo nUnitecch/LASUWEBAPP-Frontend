@@ -15,8 +15,13 @@ import {
   SignupFormData,
 } from "@/lib/schemas/authSchema";
 import { FormProvider, useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import { registerStudent } from "@/api/auth";
+import { useRouter } from "next/navigation";
+import { mapSignupToApi } from "@/lib/api/mapper";
 
 export default function SignupPage() {
+  const router = useRouter();
   const [steps, setSteps] = useState(1);
   const methods = useForm<SignupFormData>({
     defaultValues: {
@@ -39,21 +44,46 @@ export default function SignupPage() {
     },
   });
 
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-  } = methods;
+  const { handleSubmit } = methods;
 
-  const next = () => {
-    methods.trigger();
-    if (steps < 4) setSteps(steps + 1);
+  const next = async () => {
+    const fieldsPerStep = [
+      ["fullname", "email", "gender"],
+      ["matricNo", "campus", "faculty", "department", "level"],
+      [
+        "whatsappNumber",
+        "callingNumber",
+        "address",
+        "guidanceName",
+        "guidanceNumber",
+      ],
+      ["username", "password", "confirmPassword"],
+    ];
+
+    const isStepValid = await methods.trigger(fieldsPerStep[steps - 1] as any);
+    if (isStepValid && steps < 4) setSteps(steps + 1);
   };
 
   const previous = () => {
     if (steps > 1) setSteps(steps - 1);
   };
 
-  const onSubmit = (data: SignupFormData) => console.log(data);
+  const { isPending, mutate } = useMutation({
+    mutationFn: registerStudent,
+    onSuccess: () => {
+      console.log("Account created successfully!");
+      router.push("/auth/signin");
+    },
+    onError: (error: any) => {
+      console.error(error.message || "Something went wrong");
+    },
+  });
+
+  const onSubmit = (data: SignupFormData) => {
+    const apiPayload = mapSignupToApi(data);
+    mutate(apiPayload);
+    console.log(apiPayload);
+  };
 
   return (
     <div className="w-[95%]">
@@ -221,9 +251,9 @@ export default function SignupPage() {
               className={`btn-primary ml-auto ${
                 steps !== 4 ? "hidden" : "block"
               }`}
-              disabled={isSubmitting}
+              disabled={isPending}
             >
-              {isSubmitting ? "Create..." : "Submit"}
+              {isPending ? "Create..." : "Submit"}
             </Button>
           </div>
           <p className="text-center">

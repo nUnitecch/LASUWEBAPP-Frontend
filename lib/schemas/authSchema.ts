@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const genderOptions = [
-  { value: "m", label: "Male" },
-  { value: "f", label: "Female" },
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
 ];
 
 export const campusOptions = [

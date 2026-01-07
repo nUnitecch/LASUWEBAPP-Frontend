@@ -1,44 +1,11 @@
+import { RegisterStudentParams, StudentLoginParams } from "@/types/auth.types";
 import axios from "axios";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE as string;
 
-type StudentRegistrationData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  dateOfBirth: string;
-  matricNumber: string;
-  campus: string;
-  faculty: string;
-  department: string;
-  level: string;
-  gender: string;
-  whatsappNumber: string;
-  callingNumber: string;
-  address: string;
-  religion: string;
-  guardianName: string;
-  guardianPhoneNumber: string;
-  username: string;
-  password: string;
-};
-
-type StudentLoginData = {
-  email: string;
-  password: string;
-};
-
-interface RegisterStudentParams {
-  credentials: StudentRegistrationData;
-}
-
-interface StudentLoginParams {
-  credentials: StudentLoginData;
-}
-
-async function registerStudent({
-  credentials,
-}: RegisterStudentParams): Promise<void> {
+async function registerStudent(
+  credentials: RegisterStudentParams
+): Promise<void> {
   try {
     const response = await axios.post(
       `${API_BASE}/student/register`,
@@ -67,7 +34,7 @@ async function registerStudent({
   }
 }
 
-async function loginStudent({ credentials }: StudentLoginParams) {
+async function loginStudent(credentials: StudentLoginParams) {
   try {
     const response = await axios.post(
       `${API_BASE}/student/login`,
@@ -89,22 +56,5 @@ async function loginStudent({ credentials }: StudentLoginParams) {
 export { registerStudent, loginStudent };
 
 // const studentData: StudentRegistrationData = {
-//   firstName: "Hertz",
-//   lastName: "Freud",
-//   email: "hertz.freud@student.edu.ng",
-//   dateOfBirth: "2000-10-10",
-//   matricNumber: "2023/041",
-//   campus: "ojo",
-//   faculty: "Engineering",
-//   department: "Mathematics",
-//   level: "300",
-//   gender: "male",
-//   whatsappNumber: "+2348012345678",
-//   callingNumber: "+2348012345678",
-//   address: "123 University Road, Lagos",
-//   religion: "Christian",
-//   guardianName: "Janet Freud",
-//   guardianPhoneNumber: "+2348098765432",
-//   username: "hertziv",
-//   password: "securePassword123!",
+ 
 // };
