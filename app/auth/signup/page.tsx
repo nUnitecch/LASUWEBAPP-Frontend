@@ -47,11 +47,11 @@ export default function SignupPage() {
     mode: "onChange",
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, trigger } = methods;
 
   const next = async () => {
     const fields = currentStepFields[steps as keyof typeof currentStepFields];
-    const valid = await methods.trigger(fields);
+    const valid = await trigger(fields);
     if (valid) setSteps((prev) => Math.min(prev + 1, 4));
   };
 
