@@ -33,6 +33,8 @@ export default function FormSelect({
     formState: { errors },
   } = useFormContext();
 
+  const error = errors[name]?.message as string;
+
   return (
     <div>
       <label htmlFor={name} className="block mb-1">
@@ -45,7 +47,13 @@ export default function FormSelect({
         rules={{ required: required ? "This field is required" : false }}
         render={({ field }) => (
           <Select onValueChange={field.onChange} value={field.value}>
-            <SelectTrigger className="w-full">
+            <SelectTrigger
+              className={`w-full ${
+                error
+                  ? "border-red-500 bg-red-50 focus:ring-red-500"
+                  : "border-border focus:border-primary"
+              }`}
+            >
               <SelectValue placeholder={placeholder} />
             </SelectTrigger>
             <SelectContent className="w-full">
@@ -61,11 +69,7 @@ export default function FormSelect({
           </Select>
         )}
       />
-      {errors[name] && (
-        <p className="text-red-500 text-sm">
-          {errors[name]?.message as string}
-        </p>
-      )}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }

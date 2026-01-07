@@ -187,7 +187,7 @@
     height: 100%;
     width: 100%;
   }
-  
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -227,6 +227,12 @@
   .about-card:nth-child(even) .card-desc {
     background: var(--primary-btn);
     color: var(--primary-foreground);
+  }
+
+  .error {
+    color: var(--error);
+    font: 10px;
+    margin-top: 2px;
   }
 
   .footer-overlay {

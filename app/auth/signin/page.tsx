@@ -11,7 +11,7 @@ import { signinSchema } from "@/lib/schemas/authSchema";
 export default function SigninPage() {
   const methods = useForm({
     resolver: zodResolver(signinSchema),
-    mode: "onTouched",
+    mode: "onChange",
     defaultValues: {
       email: "",
       password: "",
