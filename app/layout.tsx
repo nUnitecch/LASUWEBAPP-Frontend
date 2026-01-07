@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+// import { Roboto } from "next/font/google";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
+import { Toaster } from "sonner";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -10,11 +11,11 @@ const geist = Geist({
   display: "swap",
 });
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-});
+// const roboto = Roboto({
+//   subsets: ["latin"],
+//   weight: ["400"],
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "Lasu Recommendation App",
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className={geist.className}>
       <body>
         <Provider>{children}</Provider>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );
