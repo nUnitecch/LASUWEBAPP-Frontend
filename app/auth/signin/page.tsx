@@ -2,12 +2,16 @@
 
 import FormField from "@/components/Forms/FormField";
 import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { signinSchema } from "@/lib/schemas/authSchema";
 
 export default function SigninPage() {
   const methods = useForm({
+    resolver: zodResolver(signinSchema),
+    mode: "onTouched",
     defaultValues: {
       email: "",
       password: "",
@@ -21,7 +25,7 @@ export default function SigninPage() {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <div className="w-[95%]">
+    <div className="w-[95%] mx-auto">
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
@@ -34,7 +38,7 @@ export default function SigninPage() {
         </p>
       </div>
       <FormProvider {...methods}>
-        <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="p-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="fields flex flex-col gap-3 mb-5">
             <FormField
               name="email"

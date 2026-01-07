@@ -41,7 +41,9 @@ async function loginStudent(credentials: StudentLoginParams) {
       credentials,
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
-    console.log("Student Logged in successfully", response.data);
+    console.log("Login successful", response.data);
+
+    return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("Login failed:", error.response?.data || error.message);
@@ -54,7 +56,3 @@ async function loginStudent(credentials: StudentLoginParams) {
 }
 
 export { registerStudent, loginStudent };
-
-// const studentData: StudentRegistrationData = {
- 
-// };

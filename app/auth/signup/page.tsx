@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { GraduationCap } from "lucide-react";
 import Link from "next/link";
 import FormField from "@/components/Forms/FormField";
@@ -13,17 +14,18 @@ import {
   genderOptions,
   levelOptions,
   SignupFormData,
+  signupSchema,
 } from "@/lib/schemas/authSchema";
 import { FormProvider, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { registerStudent } from "@/api/auth";
-import { useRouter } from "next/navigation";
 import { mapSignupToApi } from "@/lib/api/mapper";
+import { useStudentRegistration } from "@/hooks/useAuth";
+import { currentStepFields } from "@/constants/signupFields";
 
 export default function SignupPage() {
-  const router = useRouter();
   const [steps, setSteps] = useState(1);
   const methods = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+    shouldUnregister: false,
     defaultValues: {
       fullname: "",
       email: "",
@@ -42,51 +44,40 @@ export default function SignupPage() {
       password: "",
       confirmPassword: "",
     },
+    mode: "onChange",
   });
 
   const { handleSubmit } = methods;
 
   const next = async () => {
-    const fieldsPerStep = [
-      ["fullname", "email", "gender"],
-      ["matricNo", "campus", "faculty", "department", "level"],
-      [
-        "whatsappNumber",
-        "callingNumber",
-        "address",
-        "guidanceName",
-        "guidanceNumber",
-      ],
-      ["username", "password", "confirmPassword"],
-    ];
-
-    const isStepValid = await methods.trigger(fieldsPerStep[steps - 1] as any);
-    if (isStepValid && steps < 4) setSteps(steps + 1);
+    const fields = currentStepFields[steps as keyof typeof currentStepFields];
+    const valid = await methods.trigger(fields);
+    if (valid) setSteps((prev) => Math.min(prev + 1, 4));
   };
 
   const previous = () => {
     if (steps > 1) setSteps(steps - 1);
   };
 
-  const { isPending, mutate } = useMutation({
-    mutationFn: registerStudent,
-    onSuccess: () => {
-      console.log("Account created successfully!");
-      router.push("/auth/signin");
-    },
-    onError: (error: any) => {
-      console.error(error.message || "Something went wrong");
-    },
-  });
+  const { isPending, register } = useStudentRegistration();
 
   const onSubmit = (data: SignupFormData) => {
     const apiPayload = mapSignupToApi(data);
-    mutate(apiPayload);
-    console.log(apiPayload);
+    register(apiPayload);
   };
 
   return (
-    <div className="w-[95%]">
+    <div className="w-[95%] mx-auto">
+      <div className="flex justify-center gap-2 my-8">
+        {[1, 2, 3, 4].map((step) => (
+          <div
+            key={step}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              steps >= step ? "bg-primary" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
@@ -96,7 +87,7 @@ export default function SignupPage() {
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
       </div>
       <FormProvider {...methods}>
-        <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="p-4" onSubmit={handleSubmit(onSubmit)}>
           <>
             {steps === 1 && (
               <div className="fields flex flex-col gap-5 mb-5">
@@ -170,9 +161,9 @@ export default function SignupPage() {
             {steps === 3 && (
               <div className="fields flex flex-col gap-3 mb-5">
                 <FormField
+                  label="WhatsApp Number"
                   name="whatsappNumber"
                   type="tel"
-                  label="WhatsApp Number"
                   placeholder="e.g. 08012345678"
                 />
                 <FormField
@@ -206,6 +197,7 @@ export default function SignupPage() {
               <div className="fields flex flex-col gap-3 mb-5">
                 <FormField
                   name="username"
+                  type="text"
                   label="Username"
                   placeholder="Choose a Username"
                   required

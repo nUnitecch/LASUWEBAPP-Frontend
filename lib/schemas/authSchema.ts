@@ -48,11 +48,17 @@ export const signupSchema = z
     faculty: z.string().min(1, "Select faculty"),
     department: z.string().min(1, "Select department"),
     level: z.string().min(1, "Select level"),
-    whatsappNumber: z.string().min(10, "Invalid WhatsApp number"),
     callingNumber: z.string().min(10, "Invalid calling number"),
     address: z.string().min(10, "Address too short"),
-    guidanceName: z.string().min(2, "Guidance name too short"),
-    guidanceNumber: z.string().min(10, "Invalid guidance number"),
+    guidanceName: z
+      .string()
+      .min(2)
+      .optional()
+      .refine((val) => !val || val.length >= 2, {
+        message: "Guardian name too short",
+      }),
+    guidanceNumber: z.string().min(10).optional(),
+    whatsappNumber: z.string().optional(),
     password: z
       .string()
       .min(8, "Password too short")
@@ -67,4 +73,16 @@ export const signupSchema = z
     path: ["confirmPassword"],
   });
 
+export const signinSchema = z.object({
+  email: z.email("Invalid email"),
+  password: z
+    .string()
+    .min(8, "Password too short")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+      "Must include uppercase, lowercase, number"
+    ),
+});
+
 export type SignupFormData = z.infer<typeof signupSchema>;
+export type SigninFormData = z.infer<typeof signinSchema>;

@@ -15,7 +15,7 @@ export default function PasswordResetPage() {
             <KeyRound className="size-full" />
           </div>
         </div>
-        <h1 className="text-2xl font-semibold my-3">Sign in</h1>
+        <h1 className="text-2xl font-semibold my-3">Reset Password</h1>
         <p className="text-[18px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>

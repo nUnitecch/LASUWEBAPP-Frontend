@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -29,35 +29,43 @@ export default function FormSelect({
   required = false,
 }: FormSelectProps) {
   const {
-    register,
-    setValue,
+    control,
     formState: { errors },
   } = useFormContext();
-
-  const error = errors[name]?.message as string;
 
   return (
     <div>
       <label htmlFor={name} className="block mb-1">
         {label}
+        {required && " *"}
       </label>
-      <Select onValueChange={(value) => setValue(name, value)}>
-        <SelectTrigger className="w-full">
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-        <SelectContent className="w-full">
-          <SelectGroup>
-            <SelectLabel>{groupLabel}</SelectLabel>
-            {options?.map(({ value, label }, id) => (
-              <SelectItem key={id} value={value}>
-                {label}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-      <input type="hidden" {...register(name, { required })} />
+      <Controller
+        name={name}
+        control={control}
+        rules={{ required: required ? "This field is required" : false }}
+        render={({ field }) => (
+          <Select onValueChange={field.onChange} value={field.value}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder={placeholder} />
+            </SelectTrigger>
+            <SelectContent className="w-full">
+              <SelectGroup>
+                <SelectLabel>{groupLabel}</SelectLabel>
+                {options.map((opt) => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        )}
+      />
+      {errors[name] && (
+        <p className="text-red-500 text-sm">
+          {errors[name]?.message as string}
+        </p>
+      )}
     </div>
   );
 }

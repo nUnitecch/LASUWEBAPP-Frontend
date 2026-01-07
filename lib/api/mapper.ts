@@ -1,8 +1,8 @@
-import { SignupFormData } from "@/lib/schemas/authSchema";
-import { RegisterStudentParams } from "@/types/auth.types";
+import { SigninFormData, SignupFormData } from "@/lib/schemas/authSchema";
+import { RegisterStudentParams, StudentLoginParams } from "@/types/auth.types";
 
 export const mapSignupToApi = (data: SignupFormData): RegisterStudentParams => {
-  const nameParts = data.fullname.trim().split(" ");
+  const nameParts = data.fullname.trim().split(/\s+/);
   const firstName = nameParts[0] || "";
   const lastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
 
@@ -19,13 +19,22 @@ export const mapSignupToApi = (data: SignupFormData): RegisterStudentParams => {
       department: data.department,
       level: data.level,
       gender: data.gender,
-      whatsappNumber: data.whatsappNumber,
+      whatsappNumber: data.whatsappNumber ?? "",
       callingNumber: data.callingNumber,
       address: data.address,
-      guardianName: data.guidanceName,
-      guardianPhoneNumber: data.guidanceNumber,
+      guardianName: data.guidanceName ?? "",
+      guardianPhoneNumber: data.guidanceNumber ?? "",
       dateOfBirth: "Not specified",
       religion: "Not specified",
+    },
+  };
+};
+
+export const mapLogin = (data: SigninFormData): StudentLoginParams => {
+  return {
+    credentials: {
+      email: data.email,
+      password: data.password,
     },
   };
 };
