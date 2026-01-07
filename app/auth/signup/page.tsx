@@ -47,11 +47,11 @@ export default function SignupPage() {
     mode: "onChange",
   });
 
-  const { handleSubmit } = methods;
+  const { handleSubmit, trigger } = methods;
 
   const next = async () => {
     const fields = currentStepFields[steps as keyof typeof currentStepFields];
-    const valid = await methods.trigger(fields);
+    const valid = await trigger(fields);
     if (valid) setSteps((prev) => Math.min(prev + 1, 4));
   };
 
@@ -68,16 +68,6 @@ export default function SignupPage() {
 
   return (
     <div className="w-[95%] mx-auto">
-      <div className="flex justify-center gap-2 my-8">
-        {[1, 2, 3, 4].map((step) => (
-          <div
-            key={step}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              steps >= step ? "bg-primary" : "bg-gray-300"
-            }`}
-          />
-        ))}
-      </div>
       <div className="text-center">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
@@ -85,6 +75,16 @@ export default function SignupPage() {
           </div>
         </div>
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
+        <div className="flex justify-center gap-2 my-8 px-4">
+          {[1, 2, 3, 4].map((step) => (
+            <div
+              key={step}
+              className={`w-full h-1 rounded-full transition-colors ${
+                steps >= step ? "btn-primary" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
       </div>
       <FormProvider {...methods}>
         <form className="p-4" onSubmit={handleSubmit(onSubmit)}>

@@ -26,14 +26,19 @@ export default function FormField({
 
   return (
     <div className="inputField">
-      <label htmlFor={name} className="block mb-1 text-[14px]">
+      <label htmlFor={name} className="block mb-1">
         {label}
+        {required && " *"}
       </label>
       {type === "textarea" ? (
         <textarea
           id={name}
           placeholder={placeholder}
-          className="border w-full rounded p-2 min-h-20"
+          className={`border w-full rounded p-2 min-h-20  ${
+            error
+              ? "border-red-500 bg-red-50 focus:ring-red-500"
+              : "border-border focus:border-primary"
+          }`}
           {...register(name, { required })}
         ></textarea>
       ) : (
@@ -41,11 +46,15 @@ export default function FormField({
           type={type || "text"}
           id={name}
           placeholder={placeholder}
-          className="border w-full h-10 rounded px-2"
+          className={`border w-full h-10 rounded px-2 ${
+            error
+              ? "border-red-500 bg-red-50 focus:ring-red-500"
+              : "border-border focus:border-primary"
+          }`}
           {...register(name, { required })}
         />
       )}
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }
