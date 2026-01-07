@@ -34,7 +34,7 @@ export default function SigninPage() {
         </p>
       </div>
       <FormProvider {...methods}>
-        <form className="m-5" onSubmit={handleSubmit(onSubmit)}>
+        <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
           <div className="fields flex flex-col gap-3 mb-5">
             <FormField
               name="email"
