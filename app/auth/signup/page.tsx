@@ -20,6 +20,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { mapSignupToApi } from "@/lib/api/mapper";
 import { useStudentRegistration } from "@/hooks/useAuth";
 import { currentStepFields } from "@/constants/signupFields";
+import ProgressBar from "@/components/ProgressBar";
 
 export default function SignupPage() {
   const [steps, setSteps] = useState(1);
@@ -75,16 +76,7 @@ export default function SignupPage() {
           </div>
         </div>
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
-        <div className="flex justify-center gap-2 my-8 px-4">
-          {[1, 2, 3, 4].map((step) => (
-            <div
-              key={step}
-              className={`w-full h-1 rounded-full transition-colors ${
-                steps >= step ? "btn-primary" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
+        <ProgressBar steps={steps} />
       </div>
       <FormProvider {...methods}>
         <form className="p-4" onSubmit={handleSubmit(onSubmit)}>
@@ -248,7 +240,7 @@ export default function SignupPage() {
               {isPending ? "Create..." : "Submit"}
             </Button>
           </div>
-          <p className="text-center">
+          <p className="text-center mt-6.5">
             Already have an account? <Link href="/auth/signin">Sign in</Link>
           </p>
         </form>
