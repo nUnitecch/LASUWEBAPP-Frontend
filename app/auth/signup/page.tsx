@@ -23,7 +23,6 @@ export default function SignupPage() {
       fullname: "",
       email: "",
       gender: "",
-      username: "",
       matricNo: "",
       campus: "",
       faculty: "",
@@ -34,6 +33,7 @@ export default function SignupPage() {
       address: "",
       guidanceName: "",
       guidanceNumber: "",
+      username: "",
       password: "",
       confirmPassword: "",
     },
@@ -175,17 +175,23 @@ export default function SignupPage() {
             {steps === 4 && (
               <div className="fields flex flex-col gap-3 mb-5">
                 <FormField
+                  name="username"
+                  label="Username"
+                  placeholder="Choose a Username"
+                  required
+                />
+                <FormField
                   name="password"
                   type="password"
                   label="Password"
-                  placeholder="Enter password"
+                  placeholder="Create a strong password"
                   required
                 />
                 <FormField
                   name="confirmPassword"
                   type="password"
                   label="Confirm Password"
-                  placeholder="Confirm password"
+                  placeholder="Re-type your password"
                   required
                 />
               </div>
