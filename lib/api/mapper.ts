@@ -1,5 +1,5 @@
 import { SigninFormData, SignupFormData } from "@/lib/schemas/authSchema";
-import { RegisterStudentParams, StudentLoginParams } from "@/types/auth.types";
+import { RegisterStudentParams, StudentLoginData } from "@/types/auth.types";
 
 export const mapSignupToApi = (data: SignupFormData): RegisterStudentParams => {
   const nameParts = data.fullname.trim().split(/\s+/);
@@ -30,11 +30,9 @@ export const mapSignupToApi = (data: SignupFormData): RegisterStudentParams => {
   };
 };
 
-export const mapLogin = (data: SigninFormData): StudentLoginParams => {
+export const mapLogin = (data: SigninFormData): StudentLoginData => {
   return {
-    credentials: {
-      email: data.email,
-      password: data.password,
-    },
+    email: data.email,
+    password: data.password,
   };
 };
