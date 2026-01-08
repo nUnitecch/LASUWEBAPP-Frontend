@@ -6,10 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { signinSchema } from "@/lib/schemas/authSchema";
+import { SigninFormData, signinSchema } from "@/lib/schemas/authSchema";
+import { useStudentLogin } from "@/hooks/useAuth";
+import { StudentLoginData } from "@/types/auth.types";
 
 export default function LoginPage() {
-  const methods = useForm({
+  const methods = useForm<SigninFormData>({
     resolver: zodResolver(signinSchema),
     mode: "onChange",
     defaultValues: {
@@ -17,12 +19,12 @@ export default function LoginPage() {
       password: "",
     },
   });
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-  } = methods;
+  const { handleSubmit } = methods;
+  const { isPending, login } = useStudentLogin();
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: StudentLoginData) => {
+    login(data);
+  };
 
   return (
     <div className="w-[95%] mx-auto">
@@ -53,8 +55,14 @@ export default function LoginPage() {
               placeholder="Enter password"
               required
             />
+            <Link
+              className="text-logo-title text-[14px] mb-3"
+              href="/auth/reset-password"
+            >
+              Forgotten password?
+            </Link>
             <Button type="submit" className="btn-primary mx-auto">
-              {isSubmitting ? "Signing in..." : "Sign in"}
+              {isPending ? "Signing in..." : "Sign in"}
             </Button>
           </div>
           <p className="text-center">

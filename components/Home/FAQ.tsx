@@ -1,6 +1,6 @@
 "use client";
 
-import { faqData } from "@/data/faqs";
+import { FAQ_ITEMS } from "@/constants/landing";
 import { useState } from "react";
 
 export default function FAQ() {
@@ -16,7 +16,7 @@ export default function FAQ() {
         Frequent Asked Questions
       </h2>
       <ul className="grid grid-cols-1 gap-x-5 gap-y-8">
-        {faqData.map((faq) => (
+        {FAQ_ITEMS.map((faq) => (
           <li key={faq.id} className="w-full shadow-md">
             <div className="flex w-full items-center gap-2 shadow-xs p-3">
               <span

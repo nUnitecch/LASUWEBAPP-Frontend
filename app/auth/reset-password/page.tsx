@@ -1,15 +1,15 @@
 "use client";
 
 import FormField from "@/components/Forms/FormField";
+import { Button } from "@/components/ui/button";
 import { KeyRound } from "lucide-react";
-import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function PasswordResetPage() {
   const methods = useForm({ defaultValues: {} });
   return (
-    <div className="w-[95%]">
-      <div className="text-center">
+    <div className="w-[95%] mx-auto">
+      <div className="text-center mb-10">
         <div className="flex justify-center mb-5">
           <div className="border size-15 rounded-full p-2 btn-primary">
             <KeyRound className="size-full" />
@@ -21,11 +21,18 @@ export default function PasswordResetPage() {
         </p>
       </div>
       <FormProvider {...methods}>
-        <form className="m-5">
-          <div className="fields flex flex-col gap-3 mb-5">
-            <FormField name="username" label="Username" placeholder="JohnDoe" />
+        <form className="p-4">
+          <div className="mb-5">
+            <FormField
+              name="email"
+              type="email"
+              label="Email Address"
+              placeholder="Enter your email"
+            />
           </div>
-          <Link href="/auth/signup">Sign up</Link>
+          <div className="flex justify-center">
+            <Button className="btn-secondary">Request for OTP</Button>
+          </div>
         </form>
       </FormProvider>
     </div>
