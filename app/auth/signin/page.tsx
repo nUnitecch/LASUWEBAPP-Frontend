@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { signinSchema } from "@/lib/schemas/authSchema";
 
-export default function SigninPage() {
+export default function LoginPage() {
   const methods = useForm({
     resolver: zodResolver(signinSchema),
     mode: "onChange",

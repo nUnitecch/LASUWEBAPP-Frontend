@@ -1,11 +1,11 @@
 import { cardDetails } from "@/data/card";
-import Card from "./Card";
+import FeatureCard from "./FeatureCard";
 
 export default function CardSection() {
   return (
     <section className="px-4 pt-20 grid grid-cols-1 gap-5">
       {cardDetails.map((card, id) => (
-        <Card details={card} key={id} />
+        <FeatureCard details={card} key={id} />
       ))}
     </section>
   );
