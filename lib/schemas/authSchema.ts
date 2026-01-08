@@ -1,42 +1,5 @@
 import { z } from "zod";
 
-export const genderOptions = [
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-];
-
-export const campusOptions = [
-  { value: "ojo", label: "Ojo campus (main)" },
-  { value: "epe", label: "Epe campus" },
-  { value: "ikeja", label: "Ikeja campus" },
-];
-
-export const facultyOptions = [
-  { value: "sci", label: "Science" },
-  { value: "edu", label: "Education" },
-  { value: "mass", label: "Mass communication" },
-  { value: "art", label: "Art" },
-  { value: "fms", label: "Management Science" },
-  { value: "fss", label: "Social Science" },
-];
-
-export const departmentOptions = [
-  { value: "csc", label: "Comp Science" },
-  { value: "math", label: "Mathematics" },
-  { value: "chem", label: "Chemistry" },
-  { value: "bio", label: "Biology" },
-  { value: "eng", label: "English" },
-  { value: "acc", label: "Accounting" },
-];
-
-export const levelOptions = [
-  { value: "100", label: "100L" },
-  { value: "200", label: "200L" },
-  { value: "300", label: "300L" },
-  { value: "400", label: "400L" },
-  { value: "500", label: "500L" },
-];
-
 export const signupSchema = z
   .object({
     fullname: z
@@ -63,7 +26,7 @@ export const signupSchema = z
       .min(10, "Invalid calling number")
       .regex(/^[\d\s+()-]+$/, "Invalid phone number format"),
     address: z.string().min(10, "Address too short"),
-    guidanceName: z
+    guardianName: z
       .string()
       .trim()
       .min(2)
@@ -71,7 +34,7 @@ export const signupSchema = z
       .refine((val) => !val || val.length >= 2, {
         message: "Guardian name too short",
       }),
-    guidanceNumber: z
+    guardianNumber: z
       .string()
       .trim()
       .min(10)

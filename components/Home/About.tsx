@@ -8,7 +8,12 @@ export default function About() {
       <div>
         <div className="py-4 flex flex-col gap-10">
           {aboutCardInfo.map((card, id) => (
-            <AboutCard info={card} key={id} />
+            <AboutCard
+              key={id}
+              title={card.title}
+              description={card.desc}
+              imageUrl={card.image}
+            />
           ))}
         </div>
         <FAQ />

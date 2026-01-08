@@ -5,11 +5,18 @@ import { toast } from "sonner";
 
 export const useStudentRegistration = () => {
   const router = useRouter();
+  const { login } = useStudentLogin();
 
   const { isPending, mutate: register } = useMutation({
     mutationFn: registerStudent,
-    onSuccess: () => {
+    onSuccess: (_, registrationData) => {
       toast.success("Account created successfully!");
+      login({
+        credentials: {
+          email: registrationData.credentials.email,
+          password: registrationData.credentials.password,
+        },
+      });
       router.push("/auth/signin");
     },
     onError: (error: any) => {

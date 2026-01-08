@@ -7,23 +7,22 @@ import Link from "next/link";
 import FormField from "@/components/Forms/FormField";
 import { Button } from "@/components/ui/button";
 import FormSelect from "@/components/Forms/FormSelect";
+import { FormProvider, useForm } from "react-hook-form";
+import { mapSignupToApi } from "@/lib/api/mapper";
+import { useStudentRegistration } from "@/hooks/useAuth";
 import {
   campusOptions,
+  currentStepFields,
   departmentOptions,
   facultyOptions,
   genderOptions,
   levelOptions,
-  SignupFormData,
-  signupSchema,
-} from "@/lib/schemas/authSchema";
-import { FormProvider, useForm } from "react-hook-form";
-import { mapSignupToApi } from "@/lib/api/mapper";
-import { useStudentRegistration } from "@/hooks/useAuth";
-import { currentStepFields } from "@/constants/signupFields";
+} from "@/constants/signupFields";
 import ProgressBar from "@/components/ProgressBar";
+import { SignupFormData, signupSchema } from "@/lib/schemas/authSchema";
 
 export default function SignupPage() {
-  const [steps, setSteps] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
   const methods = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     shouldUnregister: false,
@@ -39,8 +38,8 @@ export default function SignupPage() {
       whatsappNumber: "",
       callingNumber: "",
       address: "",
-      guidanceName: "",
-      guidanceNumber: "",
+      guardianName: "",
+      guardianNumber: "",
       username: "",
       password: "",
       confirmPassword: "",
@@ -51,13 +50,14 @@ export default function SignupPage() {
   const { handleSubmit, trigger } = methods;
 
   const next = async () => {
-    const fields = currentStepFields[steps as keyof typeof currentStepFields];
-    const valid = await trigger(fields);
-    if (valid) setSteps((prev) => Math.min(prev + 1, 4));
+    const fields =
+      currentStepFields[currentStep as keyof typeof currentStepFields];
+    const isValid = await trigger(fields);
+    if (isValid) setCurrentStep((prev) => Math.min(prev + 1, 4));
   };
 
   const previous = () => {
-    if (steps > 1) setSteps(steps - 1);
+    if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
   const { isPending, register } = useStudentRegistration();
@@ -76,12 +76,12 @@ export default function SignupPage() {
           </div>
         </div>
         <h1 className="text-2xl font-semibold my-3">Create Account</h1>
-        <ProgressBar steps={steps} />
+        <ProgressBar currentStep={currentStep} />
       </div>
       <FormProvider {...methods}>
         <form className="p-4" onSubmit={handleSubmit(onSubmit)}>
           <>
-            {steps === 1 && (
+            {currentStep === 1 && (
               <div className="fields flex flex-col gap-5 mb-5">
                 <FormField
                   label="Fullname"
@@ -107,13 +107,13 @@ export default function SignupPage() {
                 />
               </div>
             )}
-            {steps === 2 && (
+            {currentStep === 2 && (
               <div className="fields flex flex-col gap-3 mb-5">
                 <FormField
                   label="Matric Number"
                   type="number"
                   name="matricNo"
-                  placeholder="e.g 220673278"
+                  placeholder="e.g 2206732"
                   required
                 />
                 <FormSelect
@@ -150,19 +150,19 @@ export default function SignupPage() {
                 />
               </div>
             )}
-            {steps === 3 && (
+            {currentStep === 3 && (
               <div className="fields flex flex-col gap-3 mb-5">
                 <FormField
                   label="WhatsApp Number"
                   name="whatsappNumber"
                   type="tel"
-                  placeholder="e.g. 08012345678"
+                  placeholder="+234 xxx xxx xxxx"
                 />
                 <FormField
                   name="callingNumber"
                   type="tel"
                   label="Calling Number"
-                  placeholder="e.g. 08012345678"
+                  placeholder="+234 xxx xxx xxxx"
                 />
                 <FormField
                   name="address"
@@ -173,19 +173,19 @@ export default function SignupPage() {
                 />
                 <FormField
                   type="text"
-                  name="guidanceName"
-                  label="Guidance Name"
+                  name="guardianName"
+                  label="Guardian Name"
                   placeholder="Guardian's name"
                 />
                 <FormField
-                  name="guidanceNumber"
+                  name="guardianNumber"
                   type="tel"
-                  label="Guidance Number"
-                  placeholder="e.g. 08012345678"
+                  label="Guardian Number"
+                  placeholder="+234 xxx xxx xxxx"
                 />
               </div>
             )}
-            {steps === 4 && (
+            {currentStep === 4 && (
               <div className="fields flex flex-col gap-3 mb-5">
                 <FormField
                   name="username"
@@ -212,7 +212,7 @@ export default function SignupPage() {
             )}
           </>
           <div className="flex w-full">
-            {steps > 1 && (
+            {currentStep > 1 && (
               <Button
                 type="button"
                 className="btn-secondary"
@@ -224,7 +224,7 @@ export default function SignupPage() {
             <Button
               type="button"
               className={`btn-primary ml-auto ${
-                steps < 4 ? "block" : "hidden"
+                currentStep < 4 ? "block" : "hidden"
               }`}
               onClick={next}
             >
@@ -233,7 +233,7 @@ export default function SignupPage() {
             <Button
               type="submit"
               className={`btn-primary ml-auto ${
-                steps !== 4 ? "hidden" : "block"
+                currentStep !== 4 ? "hidden" : "block"
               }`}
               disabled={isPending}
             >
