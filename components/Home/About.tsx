@@ -1,4 +1,4 @@
-import { aboutCardInfo } from "@/data/about";
+import { ABOUT_SECTIONS } from "@/constants/landing";
 import AboutCard from "./AboutCard";
 import FAQ from "./FAQ";
 
@@ -7,7 +7,7 @@ export default function About() {
     <section className="px-4 py-20">
       <div>
         <div className="py-4 flex flex-col gap-10">
-          {aboutCardInfo.map((card, id) => (
+          {ABOUT_SECTIONS.map((card, id) => (
             <AboutCard
               key={id}
               title={card.title}

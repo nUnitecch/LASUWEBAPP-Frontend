@@ -1,4 +1,4 @@
-import { RegisterStudentParams, StudentLoginParams } from "@/types/auth.types";
+import { RegisterStudentParams, StudentLoginData } from "@/types/auth.types";
 import axios from "axios";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE as string;
@@ -34,7 +34,8 @@ async function registerStudent(
   }
 }
 
-async function loginStudent(credentials: StudentLoginParams) {
+async function loginStudent({ email, password }: StudentLoginData) {
+  const credentials = { email, password };
   try {
     const response = await axios.post(
       `${API_BASE}/student/login`,
