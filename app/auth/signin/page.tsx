@@ -34,7 +34,7 @@ export default function LoginPage() {
         </div>
         <h1 className="text-2xl font-semibold my-3">Sign in</h1>
         <p className="text-[18px]">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Sign in to continue your academic journey!
         </p>
       </div>
       <FormProvider {...methods}>
