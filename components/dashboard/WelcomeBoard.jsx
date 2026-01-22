@@ -7,7 +7,7 @@ export default function WelcomeBoard() {
         <button className="text-[#4B5EEC] bg-white px-4 py-1 rounded-[9px] ">
           View Timetable
         </button>
-        <button className="bg-[#30397E] text-white px-3 py-1 rounded-[9px] ">
+        <button className="bg-[#30397E] text-white px-4 py-1 rounded-[9px] ">
           Search Materials
         </button>
       </div>

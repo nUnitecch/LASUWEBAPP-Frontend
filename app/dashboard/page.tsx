@@ -1,5 +1,6 @@
 import Header from "@/components/dashboard/Header";
 import QuickAction from "@/components/dashboard/QuickAction";
+import Quote from "@/components/dashboard/Quote";
 import WelcomeBoard from "@/components/dashboard/WelcomeBoard"
 
 export default function Dashboard() {
@@ -8,6 +9,7 @@ export default function Dashboard() {
       <Header />
       <WelcomeBoard/>
       <QuickAction/>
+      <Quote/>
     </div>
   );
 }
