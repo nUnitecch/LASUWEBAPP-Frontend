@@ -1,5 +1,34 @@
-import React from "react";
+const studyMaterials = [
+  {
+    image: "/icons/quickAction (4).png",
+    name: "Timetable",
+  },
+  {
+    image: "/icons/quickAction (3).png",
+    name: "Study Materials",
+  },
+  {
+    image: "/icons/quickAction (2).png",
+    name: "Past Questions",
+  },
+  {
+    image: "/icons/quickAction (1).png",
+    name: "Academic Calendar",
+  },
+];
 
 export default function QuickAction() {
-  return <div>QuickAction</div>;
+  return (
+    <section className="text-card flex flex-col gap-4">
+      <h2>QuickAction</h2>
+      <main className="grid grid-cols-2 gap-4">
+        {studyMaterials.map((card, index) => (
+          <div key={index} className="border px-6 py-10 rounded-xl text-black text-center flex flex-col gap-3 items-center">
+            <img src={card.image} alt="" />
+            <p>{card.name}</p>
+          </div>
+        ))}
+      </main>
+    </section>
+  );
 }
