@@ -1,6 +1,7 @@
 import Header from "@/components/dashboard/Header";
 import QuickAction from "@/components/dashboard/QuickAction";
 import Quote from "@/components/dashboard/Quote";
+import UpcomingClasses from "@/components/dashboard/UpcomingClasses";
 import WelcomeBoard from "@/components/dashboard/WelcomeBoard"
 
 export default function Dashboard() {
@@ -10,6 +11,7 @@ export default function Dashboard() {
       <WelcomeBoard/>
       <QuickAction/>
       <Quote/>
+      <UpcomingClasses/>
     </div>
   );
 }
