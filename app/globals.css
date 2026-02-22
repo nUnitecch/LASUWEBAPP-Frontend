@@ -1,14 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --logo-title: #4b5eec;
   --navlink: #585858;
   --primary-foreground: oklch(0.985 0 0);
-  --background: #ffffff;
-  --foreground: #171717;
 
   --primary-text: #383838;
   --border-color: #4e7ee5;
@@ -25,31 +23,8 @@
   --success: #10b981;
   --error: #ef4444;
   --warning: #f59e0b;
-
-  --ellipse-circle-a: #e44bec30;
-  --ellipse-circle-b: linear-gradient(
-    180deg,
-    rgba(107, 120, 216, 0.19) 0%,
-    rgba(75, 94, 236, 0.19) 100%
-  );
-  --ellipse-circle-c: linear-gradient(
-    180deg,
-    rgba(107, 120, 216, 0.19) 0%,
-    rgba(75, 94, 236, 0.19) 100%
-  );
-  --rectangle-shape: linear-gradient(
-    180deg,
-    rgba(75, 94, 236, 0.25) 0%,
-    rgba(43, 53, 134, 0.25) 100%
-  );
-  --background-line: linear-gradient(
-    90deg,
-    #ffffff 6.25%,
-    rgba(75, 94, 236, 0.06) 99.99%
-  );
+  /* SHADCN TOKENs */
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -78,15 +53,16 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
 }
 
-@theme {
+@theme inline {
   --bg-background-line: var(--background-line);
   --bg-ellipse-a: var(--ellipse-circle-a);
   --bg-ellipse-b: var(--ellipse-circle-b);
   --bg-ellipse-c: var(--ellipse-circle-c);
   --bg-rectangle-shape: var(--rectangle-shape);
-
   --color-logo-title: var(--logo-title);
   --color-border-color: var(--border-color);
   --color-background: var(--background);
@@ -102,9 +78,6 @@
   --color-warning: var(--warning);
 
   --text-line-size: var(--footer-border-size);
-}
-
-@theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -180,53 +153,32 @@
 }
 
 @layer base {
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-  }
-
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-
-    --primary: #38bdf8;
-    --primary-foreground: #0a0a0a;
-    --secondary: #94a3b8;
-    --accent: #a78bfa;
-    --muted: #0f172a;
-    --border: #1f2937;
-    --glass: rgba(255, 255, 255, 0.04);
-
-    --success: #34d399;
-    --error: #f97066;
-    --warning: #fbbf24;
+  p {
+    @apply text-[16px];
   }
 }
 
 @layer components {
   .btn-primary {
-    background: var(--primary-btn);
-    color: var(--primary-foreground);
+    /* background: var(--primary-btn); */
+    /* color: var(--primary-foreground); */
+    @apply bg-background text-foreground;
   }
   .about-card:nth-child(even) {
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
+    @apply flex-row-reverse;
   }
 
   .about-card:nth-child(even) .card-desc {
-    background: var(--primary-btn);
-    color: var(--primary-foreground);
+    /* background: var(--primary-btn); */
+    /* color: var(--primary-foreground); */
+    @apply bg-background text-foreground;
   }
 
   .error {
@@ -242,18 +194,4 @@
     inset: 0;
     opacity: 0.4;
   }
-}
-
-html,
-body {
-  width: 100%;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
-
-p {
-  font-size: 16px;
 }
