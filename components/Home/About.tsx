@@ -4,7 +4,7 @@ import Container from "../Container";
 
 export default function About() {
   return (
-    <section className="relative overflow-hidden py-10">
+    <section className="relative overflow-hidden py-10" id="about">
       <Container>
         <div className="px-6 flex flex-col">
           {ABOUT_SECTIONS.map((card, id) => (
