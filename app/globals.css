@@ -138,6 +138,11 @@
   p {
     @apply text-[16px] leading-relaxed;
   }
+  input,
+  select,
+  textarea {
+    outline: none;
+  }
 }
 
 @layer components {

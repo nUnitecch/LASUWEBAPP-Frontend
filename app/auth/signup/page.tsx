@@ -48,7 +48,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="py-10 px-4 sm:px-6 flex flex-col justify-center">
+    <div className="pt-10 pb-5 px-4 sm:px-6 flex flex-col justify-center">
       {/* Header Section */}
       <div className="text-center mb-10">
         <motion.div

@@ -29,7 +29,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="px-4 py-10 sm:px-6 flex flex-col justify-center">
+    <div className="px-4 pt-10 sm:px-6 flex flex-col justify-center">
       {/* Header Section */}
       <div className="text-center mb-10">
         <motion.div
