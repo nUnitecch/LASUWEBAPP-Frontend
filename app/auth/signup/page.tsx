@@ -14,7 +14,7 @@ import AcademicForm from "./AcademicForm";
 import ContactForm from "./ContactForm";
 import SecurityForm from "./SecurityForm";
 // Data & Hooks
-import { mapSignupToApi } from "@/lib/api/mapper";
+import { mapSignupToApi } from "@/lib/mappers/auth";
 import { useStudentRegistration } from "@/hooks/useAuth";
 import { SignupFormData, signupSchema } from "@/lib/schemas/authSchema";
 import { currentStepFields } from "@/constants/signupFields";
@@ -41,10 +41,12 @@ export default function SignupPage() {
   const handlePrevious = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   const onSubmit = (data: SignupFormData) => {
-    console.log("data before map", data);
     const apiPayload = mapSignupToApi(data);
-    console.log("data after mapped", apiPayload);
-    register(apiPayload);
+    try {
+      register(apiPayload);
+    } catch (error) {
+      console.error("Register student mutation failed", error);
+    }
   };
 
   return (

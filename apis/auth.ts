@@ -1,30 +1,27 @@
-import { RegisterStudentParams, StudentLoginData } from "@/types/auth.types";
+import { StudentLoginData, StudentRegistrationData } from "@/types/auth.types";
 import axios from "axios";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE as string;
+const BASE_API = process.env.NEXT_PUBLIC_BACKEND_BASE_API as string;
 
 async function registerStudent(
-  credentials: RegisterStudentParams
+  credentials: StudentRegistrationData,
 ): Promise<void> {
   try {
     const response = await axios.post(
-      `${API_BASE}/student/register`,
+      `${BASE_API}/api/v1/student/register`,
       credentials,
       {
-        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
-    console.log("Registration successful:", response.data);
-
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error(
         "Registration failed:",
-        error.response?.data || error.message
+        error.response?.data || error.message,
       );
       throw new Error(error.response?.data?.message || "Registration failed");
     } else {
@@ -38,9 +35,12 @@ async function loginStudent({ email, password }: StudentLoginData) {
   const credentials = { email, password };
   try {
     const response = await axios.post(
-      `${API_BASE}/student/login`,
+      `${BASE_API}/api/v1/student/login`,
       credentials,
-      { withCredentials: true, headers: { "Content-Type": "application/json" } }
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      },
     );
     console.log("Login successful", response.data);
 

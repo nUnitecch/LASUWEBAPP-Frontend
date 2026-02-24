@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserRound, Loader2, ArrowLeft } from "lucide-react";
+import { UserRound, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 import FormField from "@/components/Forms/FormField";
@@ -15,10 +15,6 @@ export default function LoginPage() {
   const methods = useForm<SigninFormData>({
     resolver: zodResolver(signinSchema),
     mode: "onChange",
-    defaultValues: {
-      email: "",
-      password: "",
-    },
   });
 
   const { handleSubmit } = methods;
@@ -51,10 +47,7 @@ export default function LoginPage() {
       {/* Form Section */}
       <div className="max-w-md mx-auto w-full">
         <FormProvider {...methods}>
-          <form
-            className="relative"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="relative" onSubmit={handleSubmit(onSubmit)}>
             <motion.div
               className="space-y-4 mb-10"
               initial={{ x: -20, opacity: 0 }}

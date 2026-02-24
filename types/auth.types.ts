@@ -1,4 +1,4 @@
-type StudentRegistrationData = {
+export type StudentRegistrationData = {
   firstName: string;
   lastName: string;
   email: string;
@@ -23,8 +23,3 @@ export type StudentLoginData = {
   email: string;
   password: string;
 };
-
-export interface RegisterStudentParams {
-  credentials: StudentRegistrationData;
-}
-
