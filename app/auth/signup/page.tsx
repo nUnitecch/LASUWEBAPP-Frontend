@@ -14,7 +14,7 @@ import AcademicForm from "./AcademicForm";
 import ContactForm from "./ContactForm";
 import SecurityForm from "./SecurityForm";
 // Data & Hooks
-import { mapSignupToApi } from "@/lib/api/mapper";
+import { mapSignupToApi } from "@/lib/mappers/auth";
 import { useStudentRegistration } from "@/hooks/useAuth";
 import { SignupFormData, signupSchema } from "@/lib/schemas/authSchema";
 import { currentStepFields } from "@/constants/signupFields";
@@ -41,14 +41,16 @@ export default function SignupPage() {
   const handlePrevious = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   const onSubmit = (data: SignupFormData) => {
-    console.log("data before map", data);
     const apiPayload = mapSignupToApi(data);
-    console.log("data after mapped", apiPayload);
-    register(apiPayload);
+    try {
+      register(apiPayload);
+    } catch (error) {
+      console.error("Register student mutation failed", error);
+    }
   };
 
   return (
-    <div className="py-10 px-4 sm:px-6 flex flex-col justify-center">
+    <div className="pt-10 pb-5 px-4 sm:px-6 flex flex-col justify-center">
       {/* Header Section */}
       <div className="text-center mb-10">
         <motion.div
@@ -87,7 +89,7 @@ export default function SignupPage() {
           </AnimatePresence>
 
           {/* ACTIONS */}
-          <div className="flex items-center justify-between gap-4 border-t border-border pt-8">
+          <div className="flex items-center justify-between gap-4 border-t border-border/20 pt-8">
             {currentStep > 1 && (
               <Button
                 type="button"

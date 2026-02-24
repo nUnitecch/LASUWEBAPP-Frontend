@@ -60,10 +60,6 @@ export const signupSchema = z
       .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
       .regex(/[a-z]/, "Password must contain at least one lowercase letter")
       .regex(/\d/, "Password must contain at least one number"),
-    // .regex(
-    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
-    //   "Must include uppercase, lowercase, number"
-    // ),
     confirmPassword: z.string().trim().min(1, "Please confirm your password"),
   })
   .refine((data) => data.password === data.confirmPassword, {

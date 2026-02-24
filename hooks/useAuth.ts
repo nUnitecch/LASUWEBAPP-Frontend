@@ -1,19 +1,15 @@
-import { loginStudent, registerStudent } from "@/api/auth";
+import { loginStudent, registerStudent } from "@/apis/auth";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export const useStudentRegistration = () => {
-  const { login } = useStudentLogin();
-
+  const router = useRouter();
   const { isPending, mutate: register } = useMutation({
     mutationFn: registerStudent,
-    onSuccess: (_, registrationData) => {
+    onSuccess: () => {
       toast.success("Account created successfully!");
-      login({
-        email: registrationData.credentials.email,
-        password: registrationData.credentials.password,
-      });
+      router.push(`/auth/signin`);
     },
     onError: (error: any) => {
       toast.error(error.message || "Registration failed. Try again.");
@@ -28,9 +24,9 @@ export const useStudentLogin = () => {
 
   const { isPending, mutate: login } = useMutation({
     mutationFn: loginStudent,
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast.success("Login successfully!");
-      router.push("/dashboard");
+      router.push(`/dashboard/${data?.id}`);
     },
     onError: (error: any) => {
       toast.error(error.message || "Something went wrong");
