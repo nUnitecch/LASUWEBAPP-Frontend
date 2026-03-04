@@ -25,8 +25,8 @@ export const useStudentLogin = () => {
 
   const { isPending, mutate: login } = useMutation({
     mutationFn: loginStudent,
-    onSuccess: (data) => {
-      toast.success(`Welcome back, ${data.student.firstName}!`);
+    onSuccess: (res) => {
+      toast.success(`Welcome back, ${res.data.student.firstName}!`);
       router.push(`/dashboard/`);
     },
     onError: (error: any) => {

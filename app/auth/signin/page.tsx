@@ -72,7 +72,7 @@ export default function LoginPage() {
                 />
                 <Link
                   className="absolute top-0 right-0 text-logo text-xs font-bold hover:underline"
-                  href="/auth/reset-password"
+                  href="/auth/forgot-password"
                 >
                   Forgot?
                 </Link>

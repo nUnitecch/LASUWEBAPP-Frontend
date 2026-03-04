@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const studyMaterials = [
   {
     image: "/icons/quickAction (4).png",
@@ -21,14 +23,17 @@ export default function QuickAction() {
   return (
     <section className="flex flex-col gap-4 text-center">
       <h2>QuickAction</h2>
-      <main className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {studyMaterials.map((card, index) => (
-          <div key={index} className="border px-6 py-10 rounded-xl text-center flex flex-col gap-3 items-center">
-            <img src={card.image} alt="" />
+          <div
+            key={index}
+            className="border px-6 py-10 rounded-xl text-center flex flex-col gap-3 items-center"
+          >
+            <Image src={card.image} alt={card.name} width={40} height={40} />
             <p>{card.name}</p>
           </div>
         ))}
-      </main>
+      </div>
     </section>
   );
 }
