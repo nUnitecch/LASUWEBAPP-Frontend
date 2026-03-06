@@ -1,28 +1,28 @@
 "use client";
 
-import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { KeyRound, ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
-
 // Shared Components
 import { Button } from "@/components/ui/button";
 import FormField from "@/components/Forms/FormField";
+import { useResetPassword } from "@/hooks/useAuth";
+import {
+  ResetPasswordFormData,
+  resetPasswordSchema,
+} from "@/lib/schemas/authSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function ResetPasswordPage() {
-  const [isSending, setIsSending] = useState(false);
-
-  const methods = useForm({
-    defaultValues: {
-      password: "",
-      confirmPassword: "",
-    },
+  const methods = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+    mode: "onBlur",
   });
 
+  const { isPending, resetPwd } = useResetPassword();
   const handleEmailSubmit = async (data: any) => {
-    setIsSending(true);
-    // Simulate API call
+    resetPwd(data);
   };
 
   return (
@@ -75,9 +75,9 @@ export default function ResetPasswordPage() {
                 />
                 <Button
                   className="w-full h-12 bg-logo rounded-xl font-bold"
-                  disabled={isSending}
+                  disabled={isPending}
                 >
-                  {isSending ? (
+                  {isPending ? (
                     <>
                       <Loader2 className="animate-spin" /> Reset password ...
                     </>
