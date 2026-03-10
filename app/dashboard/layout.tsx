@@ -126,7 +126,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </motion.aside>
         <div className="flex-1 flex flex-col h-full overflow-hidden">
           <DashboardHeader />
-          <section className="px-4 sm:px-6 md:p-8 py-8 overflow-y-auto custom-scrollbar">
+          <section className="px-4 sm:px-6 md:p-8 py-8 overflow-y-auto custom-scrollbar bg-secondary">
             <div className="max-w-6xl mx-auto">{children}</div>
           </section>
         </div>

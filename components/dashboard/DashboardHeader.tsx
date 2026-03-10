@@ -4,10 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiBell, FiMenu, FiUser, FiX } from "react-icons/fi";
 import { useState } from "react";
 import Logo from "../Logo";
-import {
-
-  Settings,
-} from "lucide-react";
+import { Settings, User2 } from "lucide-react";
 import SidebarLink from "./SidebarLink";
 import { sidebarItems } from "@/constants/dashboard";
 
@@ -30,8 +27,11 @@ export default function DashboardHeader() {
           <h4 className="font-semibold">Student Overview</h4>
         </div>
         {/* Notification form */}
-        <div className="right-icons flex gap-10">
+        <div className="right-icons flex items-center gap-10">
           <FiBell className="size-6" />
+          <div className="size-10 border rounded-full flex items-center justify-center bg-logo text-background">
+            <User2 />
+          </div>
         </div>
       </div>
 

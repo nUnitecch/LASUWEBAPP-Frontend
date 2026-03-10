@@ -6,7 +6,7 @@ import WelcomeBoard from "@/components/dashboard/WelcomeBoard";
 
 export default function Dashboard() {
   return (
-    <section className="min-h-screen bg-background">
+    <section className="min-h-screen">
       <WelcomeBoard />
       <section className="space-y-6">
         <QuickAction />

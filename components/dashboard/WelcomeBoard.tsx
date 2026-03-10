@@ -1,16 +1,15 @@
 export default function WelcomeBoard() {
   return (
-    <section className="flex flex-col gap-3 bg-[#4B5EEC] p-7 text-white text-center items-center rounded-xl">
-      <h2 className="font-semibold text-2xl">Welcome back, John! </h2>
-      <p className="px-5">Your next class is CSC 203 by 2:00 PM </p>
-      <div className="flex gap-3.5 text-[14px] mt-3.5">
+    <section className="flex flex-col md:flex-row md:items-center justify-between bg-background p-6 text-primary rounded-xl mb-10">
+      <div>
+        <h2 className="font-semibold text-2xl mb-2">Welcome back, John! </h2>
+        <p className="">Your next class is CSC 203 by 2:00 PM </p>
+      </div>
+      {/* <div className="flex gap-3.5 text-[14px] mt-3.5">
         <button className="text-[#4B5EEC] bg-white px-4 py-1 rounded-[9px] ">
           View Timetable
         </button>
-        <button className="bg-[#30397E] text-white px-4 py-1 rounded-[9px] ">
-          Search Materials
-        </button>
-      </div>
+      </div> */}
     </section>
   );
 }
