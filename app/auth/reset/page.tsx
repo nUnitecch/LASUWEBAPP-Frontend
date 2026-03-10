@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { KeyRound, ArrowLeft, Loader2 } from "lucide-react";
@@ -17,7 +18,7 @@ import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import InvalidLinkView from "./InvalidLinkView";
 
-export default function ResetPasswordPage() {
+function ResetPasswordContent() {
   const methods = useForm<ResetPasswordFormData>({
     resolver: zodResolver(resetPasswordSchema),
     mode: "onBlur",
@@ -120,5 +121,19 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-screen">
+          <Loader2 className="animate-spin size-8 text-logo" />
+        </div>
+      }
+    >
+      <ResetPasswordContent />
+    </Suspense>
   );
 }
