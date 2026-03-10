@@ -1,9 +1,30 @@
-import { ChartBarBigIcon, HomeIcon, HotelIcon, MapIcon, Newspaper } from "lucide-react";
+import {
+  ChartBarBigIcon,
+  HomeIcon,
+  HotelIcon,
+  MapIcon,
+  Newspaper,
+} from "lucide-react";
 
 export const sidebarItems = [
   { label: "Dashborad", icon: HomeIcon, href: "/dashboard" },
-  { label: "News & Updates", icon: Newspaper, href: "#news&updates" },
-  { label: "Accomodation", icon: HotelIcon, href: "#accomodations" },
-  { label: "Opportunities", icon: ChartBarBigIcon, href: "#opportunities" },
-  { label: "Campus Map", icon: MapIcon, href: "#campus-map" },
+  {
+    label: "News & Updates",
+    icon: Newspaper,
+    href: "#news&updates",
+    upComing: true,
+  },
+  {
+    label: "Accomodation",
+    icon: HotelIcon,
+    href: "#accomodations",
+    upComing: true,
+  },
+  {
+    label: "Opportunities",
+    icon: ChartBarBigIcon,
+    href: "#opportunities",
+    upComing: true,
+  },
+  { label: "Campus Map", icon: MapIcon, href: "#campus-map", upComing: true },
 ];

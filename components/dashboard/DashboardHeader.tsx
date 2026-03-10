@@ -27,7 +27,7 @@ export default function DashboardHeader() {
         </button>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <h4 className="font-semibold">Overview</h4>
+          <h4 className="font-semibold">Student Overview</h4>
         </div>
         {/* Notification form */}
         <div className="right-icons flex gap-10">

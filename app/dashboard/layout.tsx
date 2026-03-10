@@ -22,11 +22,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <section className="w-full h-screen overflow-hidden bg-background">
       <div className="w-full h-full grid grid-col-1 grid-cols-[auto_1fr]">
         <motion.aside
-          animate={{ width: isCollapsed ? 73 : 260 }}
+          animate={{ width: isCollapsed ? 73 : 280 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={`relative hidden h-full md:flex flex-col border-r border-secondary bg-card`}
         >
-          <div className="h-20 flex items-center px-6 overflow-hidden">
+          <div className="h-14 flex items-center px-6 overflow-hidden border-b border-secondary">
             <AnimatePresence mode="wait">
               {isCollapsed ? (
                 <motion.span
@@ -48,24 +48,30 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               )}
             </AnimatePresence>
           </div>
-          <nav className="flex-1 px-3 space-y-1 overflow-y-auto overflow-x-hidden pt-4">
+          <nav className="flex-1 px-3 space-y-3 overflow-y-auto overflow-x-hidden pt-4">
             {sidebarItems.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={link.upComing ? "" : link.href}
                   className={cn(
-                    "flex items-center h-12 px-3 rounded-xl transition-colors group relative",
-                    isActive
-                      ? "bg-logo text-white"
-                      : "text-muted-foreground hover:bg-secondary",
+                    "flex items-center h-11 px-3 rounded-xl transition-colors group relative",
+                    link.upComing
+                      ? "text-gray-300 cursor-not-allowed"
+                      : isActive
+                        ? "bg-logo/20 text-logo"
+                        : "text-muted-foreground hover:bg-secondary",
                   )}
                 >
                   <link.icon
                     className={cn(
                       "size-6 min-w-6",
-                      isActive ? "text-white" : "text-slate-500",
+                      link.upComing
+                        ? "text-gray-300"
+                        : isActive
+                          ? "text-logo"
+                          : "text-slate-500",
                     )}
                   />
 
@@ -76,6 +82,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                       className="ml-4 font-medium whitespace-nowrap flex-1"
                     >
                       {link.label}
+                      {link.upComing && (
+                        <span className="ml-4 text-xs bg-secondary px-1.5 py-px rounded-md">
+                          Soon
+                        </span>
+                      )}
                     </motion.span>
                   )}
 
