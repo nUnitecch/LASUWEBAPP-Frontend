@@ -22,7 +22,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <section className="w-full h-screen overflow-hidden bg-background">
       <div className="w-full h-full grid grid-col-1 grid-cols-[auto_1fr]">
         <motion.aside
-          animate={{ width: isCollapsed ? 80 : 260 }}
+          animate={{ width: isCollapsed ? 73 : 260 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className={`relative hidden h-full md:flex flex-col border-r border-secondary bg-card`}
         >
@@ -56,7 +56,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "flex items-center justify-center h-12 px-3 rounded-xl transition-colors group relative",
+                    "flex items-center h-12 px-3 rounded-xl transition-colors group relative",
                     isActive
                       ? "bg-logo text-white"
                       : "text-muted-foreground hover:bg-secondary",
