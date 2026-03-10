@@ -5,6 +5,7 @@ import Logo from "../Logo";
 import LinkButton from "../LinkButton";
 import Container from "../Container";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,6 +53,9 @@ export default function Header() {
 
         {/* DESKTOP NAV (Hidden on Mobile) */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+          <Link href="/dashboard" className="hover:text-logo transition-colors">
+            Dashboard
+          </Link>
           <a href="#features" className="hover:text-logo transition-colors">
             Features
           </a>
@@ -81,6 +85,13 @@ export default function Header() {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 w-full bg-background border-b border-border p-6 flex flex-col gap-4 md:hidden shadow-xl"
           >
+            <Link
+              href="/dashboard"
+              onClick={() => setIsOpen(false)}
+              className="text-lg font-semibold border-b border-border pb-2"
+            >
+              Dashboard
+            </Link>
             <a
               href="#features"
               onClick={() => setIsOpen(false)}

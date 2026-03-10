@@ -1,17 +1,19 @@
-import Header from "@/components/dashboard/Header";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import QuickAction from "@/components/dashboard/QuickAction";
 import Quote from "@/components/dashboard/Quote";
 import UpcomingClasses from "@/components/dashboard/UpcomingClasses";
-import WelcomeBoard from "@/components/dashboard/WelcomeBoard"
+import WelcomeBoard from "@/components/dashboard/WelcomeBoard";
 
 export default function Dashboard() {
   return (
-    <div className="px-6 py-4 flex flex-col gap-9">
-      <Header />
-      <WelcomeBoard/>
-      <QuickAction/>
-      <Quote/>
-      <UpcomingClasses/>
-    </div>
+    <section className="min-h-screen bg-background">
+      <h4>Dashboard Overview</h4>
+      <WelcomeBoard />
+      <section className="space-y-6">
+        <QuickAction />
+        <UpcomingClasses />
+        <Quote />
+      </section>
+    </section>
   );
 }

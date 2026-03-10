@@ -1,29 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { KeyRound, ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
-
 // Shared Components
 import { Button } from "@/components/ui/button";
 import FormField from "@/components/Forms/FormField";
+import { useResetPassword } from "@/hooks/useAuth";
+import {
+  ResetPasswordFormData,
+  resetPasswordSchema,
+} from "@/lib/schemas/authSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+import InvalidLinkView from "./InvalidLinkView";
 
-export default function ResetPasswordPage() {
-  const [isSending, setIsSending] = useState(false);
-
-  const methods = useForm({
-    defaultValues: {
-      password: "",
-      confirmPassword: "",
-    },
+function ResetPasswordContent() {
+  const methods = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+    mode: "onBlur",
   });
 
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+  const token = searchParams.get("token");
+
+  const { isPending, resetPwd } = useResetPassword();
+
   const handleEmailSubmit = async (data: any) => {
-    setIsSending(true);
-    // Simulate API call
+    if (!id || !token) {
+      toast.error("Missing reset credentials");
+      return;
+    }
+    resetPwd({
+      password: data.password,
+      id,
+      token,
+    });
   };
+
+  if (!id || !token) return <InvalidLinkView />;
 
   return (
     <div className="flex flex-col justify-center min-h-[80vh] px-4">
@@ -75,14 +94,14 @@ export default function ResetPasswordPage() {
                 />
                 <Button
                   className="w-full h-12 bg-logo rounded-xl font-bold"
-                  disabled={isSending}
+                  disabled={isPending}
                 >
-                  {isSending ? (
+                  {isPending ? (
                     <>
-                      <Loader2 className="animate-spin" /> Reset password ...
+                      <Loader2 className="animate-spin" /> Resetting...
                     </>
                   ) : (
-                    "Reset Password"
+                    "Update Password"
                   )}
                 </Button>
               </motion.div>
@@ -102,5 +121,19 @@ export default function ResetPasswordPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center min-h-screen">
+          <Loader2 className="animate-spin size-8 text-logo" />
+        </div>
+      }
+    >
+      <ResetPasswordContent />
+    </Suspense>
   );
 }
