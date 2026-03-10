@@ -92,10 +92,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <div className="p-3 border-t border-secondary">
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className="w-full h-12 rounded-xl flex items-center justify-center group"
+              className="w-full h-12 rounded-xl flex items-center group"
             >
               <motion.div
                 animate={{ rotate: isCollapsed ? 180 : 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="size-8 flex items-center justify-center"
               >
                 <MdKeyboardDoubleArrowLeft className="size-6 text-logo" />
@@ -104,7 +105,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="ml-4 flex-1"
+                  className="ml-4 flex-1 text-left"
                 >
                   Collapse
                 </motion.div>
