@@ -89,22 +89,22 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             })}
           </nav>
           {/* aside footer */}
-          <div className="p-4 border-t border-secondary">
+          <div className="p-3 border-t border-secondary">
             <button
               onClick={() => setIsCollapsed(!isCollapsed)}
-              className="w-full h-12 px-3 rounded-xl flex items-center group"
+              className="w-full h-12 rounded-xl flex items-center justify-center group"
             >
               <motion.div
                 animate={{ rotate: isCollapsed ? 180 : 0 }}
                 className="size-8 flex items-center justify-center"
               >
-                <MdKeyboardDoubleArrowLeft className="size-5 text-logo" />
+                <MdKeyboardDoubleArrowLeft className="size-6 text-logo" />
               </motion.div>
               {!isCollapsed && (
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="ml-4"
+                  className="ml-4 flex-1"
                 >
                   Collapse
                 </motion.div>
