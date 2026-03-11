@@ -52,13 +52,6 @@ export default function QuickAction() {
             <div
               className={`p-3 rounded-xl mb-3 transition-colors ${action.bgColor} group-hover:bg-blue-100`}
             >
-              {/* <Image
-                src={action.image}
-                alt=""
-                width={32}
-                height={32}
-                className="object-contain"
-              /> */}
               <action.icon className={`size-8 ${action.color}`} />
             </div>
             <p className="text-sm text-center font-semibold text-slate-700 group-hover:text-blue-600 transition-colors">
@@ -70,43 +63,3 @@ export default function QuickAction() {
     </section>
   );
 }
-
-// import Image from "next/image";
-
-// const studyMaterials = [
-//   {
-//     image: "/icons/quickAction (4).png",
-//     name: "Timetable",
-//   },
-//   {
-//     image: "/icons/quickAction (3).png",
-//     name: "Study Materials",
-//   },
-//   {
-//     image: "/icons/quickAction (2).png",
-//     name: "Past Questions",
-//   },
-//   {
-//     image: "/icons/quickAction (1).png",
-//     name: "Academic Calendar",
-//   },
-// ];
-
-// export default function QuickAction() {
-//   return (
-//     <section className="">
-//       <h2 className="text-xl font-semibold mb-6">QuickAction</h2>
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//         {studyMaterials.map((card, index) => (
-//           <div
-//             key={index}
-//             className="bg-background rounded-xl flex flex-col gap-3 items-center"
-//           >
-//             <Image src={card.image} alt={card.name} width={40} height={40} />
-//             <p>{card.name}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }

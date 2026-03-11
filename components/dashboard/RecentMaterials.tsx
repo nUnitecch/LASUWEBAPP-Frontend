@@ -54,8 +54,11 @@ export default function RecentMaterials() {
           </Link>
         </div>
         <div className="border border-primary/15 rounded-2xl overflow-hidden">
-          {recentMaterials.map((course) => (
-            <div className="flex items-center border-b border-primary/15 last:border-b-0 px-4 py-3">
+          {recentMaterials.map((course, index) => (
+            <div
+              className="flex items-center border-b border-primary/15 last:border-b-0 px-4 py-3"
+              key={index}
+            >
               <FileIcon className="size-5 mr-4" />
               <div className="flex-1">
                 <h4 className="font-semibold mb-px">{course.title}</h4>

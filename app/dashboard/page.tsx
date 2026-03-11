@@ -1,7 +1,7 @@
 import Calendar from "@/components/dashboard/Calendar";
+import RecentMaterials from "@/components/dashboard/RecentMaterials";
 import QuickAction from "@/components/dashboard/QuickAction";
 import Quote from "@/components/dashboard/Quote";
-import RecentMaterials from "@/components/dashboard/RecentMaterials";
 import UpcomingClasses from "@/components/dashboard/UpcomingClasses";
 import WelcomeBoard from "@/components/dashboard/WelcomeBoard";
 
