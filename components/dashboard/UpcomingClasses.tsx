@@ -1,48 +1,94 @@
-import { BiAlarm } from "react-icons/bi";
+"use client";
+
+import { Clock, MapPin, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const scheduleCard = [
   {
     code: "CSC203",
     subject: "Data Structures",
-    time: "2:00 PM",
-    start: "Starts in 45 minutes",
+    time: "2:00 PM - 4:00 PM",
+    venue: "LT 1",
+    isLive: true,
   },
   {
-    code: "CSC203",
-    subject: "Data Structures",
-    time: "2:00 PM",
-    start: "Starts in 45 minutes",
-  },
-  {
-    code: "CSC203",
-    subject: "Data Structures",
-    time: "2:00 PM",
-    start: "Starts in 45 minutes",
+    code: "CSC205",
+    subject: "Operating Systems",
+    time: "4:00 PM - 6:00 PM",
+    venue: "MBA Hall",
+    isLive: false,
   },
 ];
 
 export default function UpcomingClasses() {
   return (
-    <section className="flex flex-col gap-2.5 px-4 py-3 border rounded-xl ">
-      <div className="flex items-center text-[20px] font-bold gap-3">
-        <BiAlarm className="text-2xl" />
-        <h2>Upcoming Classes</h2>
+    <section className="bg-background border border-background/50 rounded-2xl p-5 shadow-sm">
+      {/* Header - Simple & Clean */}
+      <div className="flex justify-between items-center mb-5">
+        <div className="flex items-center">
+          <Clock className="mr-3" />
+          <h2 className="text-lg font-bold text-slate-800 tracking-tight">
+            Upcoming
+          </h2>
+        </div>
+        <span className="text-[10px] font-bold text-primary/50 uppercase bg-secondary px-2 py-1 rounded-md">
+          Today
+        </span>
       </div>
-      <div className="flex flex-col gap-3.5">
+
+      {/* Simplified Card List */}
+      <div className="space-y-3">
         {scheduleCard.map((card, index) => (
-          <div key={index} className="bg-[#F2F2F2CC] rounded-xl px-3 py-1">
-            <div className="flex gap-3 ">
-              <p className="text-[#4B5EEC] bg-[#D9DDFB] rounded-[5px] px-2">
-                {card.code}
-              </p>
-              <p>{card.subject}</p>
+          <div
+            key={index}
+            className={cn(
+              "flex items-center gap-4 p-3 rounded-xl border transition-all",
+              card.isLive
+                ? "bg-logo/5 border-logo/20"
+                : "bg-white border-slate-100",
+            )}
+          >
+            {/* Time Indicator */}
+            <div className="flex flex-col items-center justify-center text-center min-w-15 border-r border-logo/20 pr-3">
+              <span className="text-xs font-bold text-primary mb-0.5">
+                {card.time}
+              </span>
+              {card.isLive && (
+                <span className="text-[9px] font-black text-logo uppercase animate-pulse">
+                  Soon
+                </span>
+              )}
             </div>
-            <span className="text-[#848484] text-[15px]">{card.time}</span>
-            <p>{card.start}</p>
+
+            {/* Course Info */}
+            <div className="flex-1">
+              <h3 className="text-sm font-semibold text-slate-800 leading-tight">
+                {card.subject}
+              </h3>
+              <span className="text-[10px] font-bold text-logo">
+                {card.code}
+              </span>
+              <div className="flex items-center gap-3 text-[11px] text-slate-400">
+                <div className="flex items-center gap-1">
+                  <MapPin size={12} />
+                  <span>{card.venue}</span>
+                </div>
+              </div>
+            </div>
+
+            <ChevronRight className="text-slate-300 size-4" />
           </div>
         ))}
       </div>
-      <p className="text-center font-semibold">View full timetable</p>
+
+      {/* Footer link */}
+      <Link
+        href="/dashboard/#"
+        className="mt-5 block text-center text-xs font-bold text-primary/40 hover:text-logo transition-colors"
+      >
+        View full timetable
+      </Link>
     </section>
   );
 }

@@ -11,7 +11,7 @@ export default function Dashboard() {
       <WelcomeBoard />
       <QuickAction />
       <Quote />
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10">
         <RecentMaterials />
         <div>
           <UpcomingClasses />
