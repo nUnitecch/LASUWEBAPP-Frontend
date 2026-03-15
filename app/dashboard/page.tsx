@@ -1,9 +1,9 @@
-import Calendar from "@/components/dashboard/Calendar";
 import RecentMaterials from "@/components/dashboard/RecentMaterials";
 import QuickAction from "@/components/dashboard/QuickAction";
 import Quote from "@/components/dashboard/Quote";
 import UpcomingClasses from "@/components/dashboard/UpcomingClasses";
 import WelcomeBoard from "@/components/dashboard/WelcomeBoard";
+import CalendarSection from "@/components/dashboard/CalendarSection";
 
 export default function Dashboard() {
   return (
@@ -11,12 +11,10 @@ export default function Dashboard() {
       <WelcomeBoard />
       <QuickAction />
       <Quote />
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-5">
         <RecentMaterials />
-        <div>
-          <UpcomingClasses />
-          <Calendar />
-        </div>
+        <UpcomingClasses />
+        <CalendarSection />
       </div>
     </section>
   );

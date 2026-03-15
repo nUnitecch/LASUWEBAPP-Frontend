@@ -52,7 +52,7 @@ const recentMaterials = [
 
 export default function RecentMaterials() {
   return (
-    <section className="py-6">
+    <section className="md:col-span-2 md:col-start-1 md:col-end-3 lg:row-span-3">
       <div className="flex justify-between items-end mb-6">
         <div>
           <h3 className="text-xl font-bold text-slate-800">Recent Materials</h3>
