@@ -7,7 +7,7 @@ import CalendarSection from "@/components/dashboard/CalendarSection";
 
 export default function Dashboard() {
   return (
-    <section className="min-h-screen">
+    <section className="min-h-dvh">
       <WelcomeBoard />
       <QuickAction />
       <Quote />
