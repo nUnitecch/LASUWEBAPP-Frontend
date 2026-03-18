@@ -23,7 +23,7 @@ const scheduleCard = [
 
 export default function UpcomingClasses() {
   return (
-    <section className="bg-background border border-background/50 rounded-2xl p-5 shadow-sm">
+    <section className="bg-background border border-background/50 rounded-2xl p-5 shadow-sm h-fit md:col-span-1 md:row-span-1 md:col-start-1 lg:col-start-3 lg:col-end-4">
       {/* Header - Simple & Clean */}
       <div className="flex justify-between items-center mb-5">
         <div className="flex items-center">
