@@ -12,7 +12,7 @@ export default function CalendarSection() {
         mode="single"
         selected={date}
         onSelect={setDate}
-        className="w-full"
+        className="w-full h-full"
       />
     </section>
   );
