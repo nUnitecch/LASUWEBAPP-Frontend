@@ -14,8 +14,9 @@ export const useStudentRegistration = () => {
     mutationFn: registerStudent,
     onSuccess: (response, variables) => {
       toast.success("Account created successfully!");
-      const email = encodeURIComponent(variables.email);
-      router.push(`/auth/verify?email=${email}`);
+      // const email = encodeURIComponent(variables.email);
+      router.push(`/auth/signin`);
+      // router.push(`/auth/verify?email=${email}`);
     },
     onError: (error: any) => {
       toast.error(error.message || "Registration failed. Try again.");
