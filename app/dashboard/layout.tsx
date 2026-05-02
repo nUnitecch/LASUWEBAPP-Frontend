@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -10,6 +10,8 @@ import Logo from "@/components/Logo";
 import { sidebarItems } from "@/constants/dashboard";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { useStudentData } from "@/contexts/studentContext";
+import FullScreenLoader from "@/components/FullScreenLoader";
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
@@ -18,6 +20,17 @@ type DashboardLayoutProps = {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  const { isLoading } = useStudentData();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || isLoading) {
+    return <FullScreenLoader />;
+  }
+
   return (
     <section className="w-full h-screen overflow-hidden bg-background">
       <div className="w-full h-full grid grid-col-1 md:grid-cols-[auto_1fr]">

@@ -39,19 +39,3 @@ export default function Dashboard() {
     </section>
   );
 }
-
-
-// export default function Dashboard() {
-//   return (
-//     <section className="min-h-screen">
-//       <WelcomeBoard />
-//       <QuickAction />
-//       <Quote />
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-rows-2 gap-5">
-//         <RecentMaterials />
-//         <UpcomingClasses />
-//         <CalendarSection />
-//       </div>
-//     </section>
-//   );
-// }
