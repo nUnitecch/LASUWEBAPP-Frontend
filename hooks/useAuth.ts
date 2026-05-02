@@ -3,8 +3,8 @@ import {
   loginStudent,
   registerStudent,
   resetPassword,
-} from "@/apis/auth";
-import { useMutation } from "@tanstack/react-query";
+} from "@/apis/authApi";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -12,10 +12,10 @@ export const useStudentRegistration = () => {
   const router = useRouter();
   const { isPending, mutate: register } = useMutation({
     mutationFn: registerStudent,
-    onSuccess: (response, variables) => {
+    onSuccess: () => {
       toast.success("Account created successfully!");
-      // const email = encodeURIComponent(variables.email);
       router.push(`/auth/signin`);
+      // const email = encodeURIComponent(variables.email);
       // router.push(`/auth/verify?email=${email}`);
     },
     onError: (error: any) => {
@@ -28,12 +28,17 @@ export const useStudentRegistration = () => {
 
 export const useStudentLogin = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const { isPending, mutate: login } = useMutation({
     mutationFn: loginStudent,
     onSuccess: (res) => {
-      toast.success(`Welcome back, ${res.data.student.firstName}!`);
-      router.push(`/dashboard/`);
+      // save token
+      localStorage.setItem("token", res.data.token);
+      // fresh fetch using the new token
+      queryClient.invalidateQueries({ queryKey: ["student-info"] });
+      toast.success(res.message || "Login successfully!");
+      router.push("/dashboard");
     },
     onError: (error: any) => {
       toast.error(error.message || "Something went wrong");

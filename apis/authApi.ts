@@ -1,7 +1,7 @@
 import { StudentLoginData, StudentRegistrationData } from "@/types/auth.types";
 import axios from "axios";
 
-const BASE_API = process.env.NEXT_PUBLIC_BACKEND_BASE_API as string;
+export const BASE_API = process.env.NEXT_PUBLIC_BACKEND_BASE_API as string;
 
 async function registerStudent(
   credentials: StudentRegistrationData,

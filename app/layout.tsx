@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Provider from "./provider";
+import QueryProvider from "./queryProvider";
 import { Toaster } from "sonner";
+import { StudentProvider } from "@/contexts/studentContext";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -26,7 +27,9 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
-        <Provider>{children}</Provider>
+        <QueryProvider>
+          <StudentProvider>{children}</StudentProvider>
+        </QueryProvider>
         <Toaster position="top-center" richColors />
       </body>
     </html>
