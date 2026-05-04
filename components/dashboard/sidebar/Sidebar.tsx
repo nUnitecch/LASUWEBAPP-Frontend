@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Logo from "../../Logo";
-import { sidebarItems } from "@/constants/dashboard";
+import { sidebarItems } from "@/constants/sidebar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 
 interface SidebarProps {
