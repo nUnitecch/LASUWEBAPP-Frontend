@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiBell, FiMenu, FiUser, FiX } from "react-icons/fi";
 import { useState } from "react";
 import Logo from "../Logo";
-import { Settings, User2 } from "lucide-react";
+import { LogOut, User2 } from "lucide-react";
 import SidebarLink from "./sidebar/SidebarLink";
-import { sidebarItems } from "@/constants/dashboard";
+import { sidebarItems } from "@/constants/sidebar";
 import { usePathname } from "next/navigation";
 
 export default function DashboardHeader() {
@@ -29,7 +29,7 @@ export default function DashboardHeader() {
           <h4 className="font-semibold">Student {pathname}</h4>
         </div>
         {/* Notification form */}
-        <div className="right-icons flex items-center gap-10">
+        <div className="right-icons flex items-center gap-5">
           <FiBell className="size-6" />
           <div className="size-10 border rounded-full flex items-center justify-center bg-logo text-background">
             <User2 />
@@ -70,15 +70,15 @@ export default function DashboardHeader() {
               })}
             </nav>
             {/* sidebar footer */}
-            <div className="space-y-6 px-6 border-t border-secondary">
+            {/* <div className="space-y-6 px-6 border-t border-secondary">
               <SidebarLink
-                label="Settings"
-                href="#settings"
+                label="Logout"
+                href=""
                 setIsOpen={setIsOpen}
-                Icon={Settings}
+                Icon={LogOut}
                 upComing={true}
               />
-            </div>
+            </div> */}
           </motion.div>
         )}
       </AnimatePresence>

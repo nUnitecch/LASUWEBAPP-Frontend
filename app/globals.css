@@ -130,7 +130,7 @@
 
 @layer base {
   * {
-    @apply outline-ring/50;
+    @apply border-none outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;

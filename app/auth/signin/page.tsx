@@ -8,7 +8,7 @@ import Link from "next/link";
 
 import FormField from "@/components/Forms/FormField";
 import { Button } from "@/components/ui/button";
-import { SigninFormData, signinSchema } from "@/lib/validations/authSchema";
+import { SigninFormData, signinSchema } from "@/libs/validations/authSchema";
 import { useStudentLogin } from "@/hooks/useAuth";
 
 export default function LoginPage() {
