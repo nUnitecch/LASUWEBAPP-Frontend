@@ -1,12 +1,13 @@
 "use client";
 
 import { useStudentInfo } from "@/hooks/useStudent";
+import { StudentType } from "@/types/student.type";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import React, { createContext, useContext } from "react";
 
 interface StudentContextType {
-  studentData: any | null;
+  studentData: StudentType | null;
   isLoading: boolean;
   logout?: () => void;
 }

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 // shared component
-import { Calendar } from "../ui/calendar";
 import { Download } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
 
 export default function CalendarSection() {
   const [date, setDate] = useState<Date | undefined>(new Date());

@@ -1,0 +1,31 @@
+export interface StudentType {
+  address: string;
+  callingNumber: string;
+  campus: string;
+  createdAt: string;
+  dateOfBirth: string;
+  deletedAt: string | null;
+  department: string;
+  email: string;
+  faculty: string;
+  firstName: string;
+  gender: string;
+  guardianName: string;
+  guardianPhoneNumber: string;
+  id: string;
+  isActive: boolean;
+  isVerified: boolean;
+  lastLogin: string | Date;
+  lastName: string;
+  level: string;
+  matricNumber: string;
+  picture: string | null;
+  religion: string;
+  resetExpires: string | null;
+  resetToken: string | null;
+  updatedAt: string | Date;
+  username: string;
+  verificationExpires: string | Date;
+  verificationToken: string;
+  whatsappNumber: string;
+}

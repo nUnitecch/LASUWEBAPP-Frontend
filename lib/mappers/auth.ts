@@ -1,4 +1,4 @@
-import { SigninFormData, SignupFormData } from "@/lib/schemas/authSchema";
+import { SigninFormData, SignupFormData } from "@/lib/validations/authSchema";
 import { StudentLoginData, StudentRegistrationData } from "@/types/auth.types";
 
 export const mapSignupToApi = (

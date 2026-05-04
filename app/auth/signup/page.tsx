@@ -16,7 +16,7 @@ import SecurityForm from "./SecurityForm";
 // Data & Hooks
 import { mapSignupToApi } from "@/lib/mappers/auth";
 import { useStudentRegistration } from "@/hooks/useAuth";
-import { SignupFormData, signupSchema } from "@/lib/schemas/authSchema";
+import { SignupFormData, signupSchema } from "@/lib/validations/authSchema";
 import { currentStepFields } from "@/constants/signupFields";
 
 export default function SignupPage() {

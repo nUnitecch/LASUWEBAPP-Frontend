@@ -4,8 +4,6 @@ import { useStudentData } from "@/contexts/studentContext";
 
 export default function WelcomeBoard() {
   const { studentData } = useStudentData();
-  console.log(studentData);
-
   return (
     <section className="flex flex-col md:flex-row md:items-center justify-between bg-background p-6 text-primary rounded-xl mb-6">
       <div>

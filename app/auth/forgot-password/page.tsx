@@ -11,7 +11,7 @@ import { useForgotPassword } from "@/hooks/useAuth";
 import {
   ForgotPasswordFormData,
   forgotPasswordSchema,
-} from "@/lib/schemas/authSchema";
+} from "@/lib/validations/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function ForgotPasswordPage() {

@@ -12,7 +12,7 @@ import { useResetPassword } from "@/hooks/useAuth";
 import {
   ResetPasswordFormData,
   resetPasswordSchema,
-} from "@/lib/schemas/authSchema";
+} from "@/lib/validations/authSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
