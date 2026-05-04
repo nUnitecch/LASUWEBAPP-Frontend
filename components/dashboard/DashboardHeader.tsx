@@ -5,13 +5,13 @@ import { FiBell, FiMenu, FiUser, FiX } from "react-icons/fi";
 import { useState } from "react";
 import Logo from "../Logo";
 import { Settings, User2 } from "lucide-react";
-import SidebarLink from "./SidebarLink";
+import SidebarLink from "./sidebar/SidebarLink";
 import { sidebarItems } from "@/constants/dashboard";
 import { usePathname } from "next/navigation";
 
 export default function DashboardHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const pathname = usePathname().split("/").at(-1);
 
   return (
     <header
@@ -26,7 +26,7 @@ export default function DashboardHeader() {
         </button>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <h4 className="font-semibold">Student Overview</h4>
+          <h4 className="font-semibold">Student {pathname}</h4>
         </div>
         {/* Notification form */}
         <div className="right-icons flex items-center gap-10">

@@ -1,13 +1,20 @@
 import {
   ChartBarBigIcon,
+  GraduationCap,
   HomeIcon,
   HotelIcon,
   MapIcon,
   Newspaper,
+  Settings,
 } from "lucide-react";
 
 export const sidebarItems = [
   { label: "Dashborad", icon: HomeIcon, href: "/dashboard" },
+  {
+    label: "Academic Hub",
+    icon: GraduationCap,
+    href: "/dashboard/academic-hub",
+  },
   {
     label: "News & Updates",
     icon: Newspaper,
@@ -27,4 +34,5 @@ export const sidebarItems = [
     upComing: true,
   },
   { label: "Campus Map", icon: MapIcon, href: "#campus-map", upComing: true },
+  { label: "Settings", icon: Settings, href: "settings" },
 ];
