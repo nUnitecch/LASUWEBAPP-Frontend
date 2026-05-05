@@ -35,13 +35,13 @@ export const useStudentLogin = () => {
     mutationFn: loginStudent,
     onSuccess: (res) => {
       // save token to cookies
-      // Cookies.set("token", res.data.token, {
-      //   expires: 7,
-      //   path: "/",
-      //   sameSite: "strict",
-      //   secure: process.env.NODE_ENV === "production",
-      // });
-
+      Cookies.set("token", res.data.token, {
+        expires: 7,
+        path: "/",
+        sameSite: "strict",
+        secure: process.env.NODE_ENV === "production",
+      });
+      // save token to localstorage
       localStorage.setItem("token", res.data.token);
       // fresh fetch using the new token
       queryClient.invalidateQueries({ queryKey: ["student-info"] });
