@@ -21,11 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${poppins.className}`}
-      data-scroll-behavior="smooth"
-    >
+    <html lang="en" className={poppins.className} data-scroll-behavior="smooth">
       <body>
         <QueryProvider>
           <StudentProvider>{children}</StudentProvider>

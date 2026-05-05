@@ -7,6 +7,7 @@ import {
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Cookies from "js-cookie";
 
 export const useStudentRegistration = () => {
   const router = useRouter();
@@ -33,7 +34,14 @@ export const useStudentLogin = () => {
   const { isPending, mutate: login } = useMutation({
     mutationFn: loginStudent,
     onSuccess: (res) => {
-      // save token
+      // save token to cookies
+      // Cookies.set("token", res.data.token, {
+      //   expires: 7,
+      //   path: "/",
+      //   sameSite: "strict",
+      //   secure: process.env.NODE_ENV === "production",
+      // });
+
       localStorage.setItem("token", res.data.token);
       // fresh fetch using the new token
       queryClient.invalidateQueries({ queryKey: ["student-info"] });

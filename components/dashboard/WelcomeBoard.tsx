@@ -1,9 +1,24 @@
 "use client";
 
 import { useStudentData } from "@/contexts/studentContext";
+import React from "react";
 
 export default function WelcomeBoard() {
-  const { studentData } = useStudentData();
+  const { studentData, isLoading } = useStudentData();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || isLoading) {
+    return (
+      <div className="space-y-8 animate-pulse mb-6">
+        <div className="h-48 w-full bg-slate-200 dark:bg-slate-800 rounded-xl" />
+      </div>
+    );
+  }
+  
   return (
     <section className="flex flex-col md:flex-row md:items-center justify-between bg-background p-6 text-primary rounded-xl mb-6">
       <div>
