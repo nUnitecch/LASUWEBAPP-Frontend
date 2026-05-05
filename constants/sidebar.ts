@@ -1,15 +1,23 @@
 import {
-  ChartBarBigIcon,
-  GraduationCap,
   HomeIcon,
-  HotelIcon,
-  MapIcon,
+  GraduationCap,
   Newspaper,
+  HotelIcon,
+  ChartBarBigIcon,
+  MapIcon,
   Settings,
 } from "lucide-react";
 
-export const sidebarItems = [
-  { label: "Dashborad", icon: HomeIcon, href: "/dashboard" },
+export interface SidebarItem {
+  label: string;
+  icon: any;
+  href: string;
+  upComing?: boolean;
+  roles?: ("student" | "admin")[];
+}
+
+export const sidebarItems: SidebarItem[] = [
+  { label: "Dashboard", icon: HomeIcon, href: "/dashboard" },
   {
     label: "Academic Hub",
     icon: GraduationCap,
@@ -18,21 +26,26 @@ export const sidebarItems = [
   {
     label: "News & Updates",
     icon: Newspaper,
-    href: "#news&updates",
+    href: "/dashboard/news",
     upComing: true,
   },
   {
-    label: "Accomodation",
+    label: "Accommodation",
     icon: HotelIcon,
-    href: "#accomodations",
+    href: "/dashboard/accommodation",
     upComing: true,
   },
   {
     label: "Opportunities",
     icon: ChartBarBigIcon,
-    href: "#opportunities",
+    href: "/dashboard/opportunities",
     upComing: true,
   },
-  { label: "Campus Map", icon: MapIcon, href: "#campus-map", upComing: true },
-  { label: "Settings", icon: Settings, href: "settings" },
+  {
+    label: "Campus Map",
+    icon: MapIcon,
+    href: "/dashboard/map",
+    upComing: true,
+  },
+  { label: "Settings", icon: Settings, href: "/dashboard/settings" },
 ];
