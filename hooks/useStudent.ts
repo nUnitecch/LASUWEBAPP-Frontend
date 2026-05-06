@@ -5,7 +5,7 @@ export function useStudentInfo() {
   return useQuery({
     queryKey: ["student-info"],
     queryFn: fetchStudentInfo,
-    enabled: typeof window !== "undefined" && !!localStorage.getItem("token"),
     retry: false,
+    staleTime: 1000 * 60 * 5,
   });
 }
