@@ -85,3 +85,19 @@ export const useResetPassword = () => {
 
   return { isPending, resetPwd };
 };
+
+export const useLogout = () => {
+  const router = useRouter();
+  const queryClient = useQueryClient();
+
+  const logout = () => {
+    Cookies.remove("token");
+    localStorage.removeItem("token");
+    queryClient.clear();
+
+    router.push("/auth/signin");
+    router.refresh();
+  };
+
+  return logout;
+};

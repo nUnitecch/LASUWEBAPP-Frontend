@@ -1,10 +1,15 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-import Logo from "../../Logo";
-import { sidebarItems } from "@/constants/sidebar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { cn } from "@/libs/utils";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
+import { LogOut } from "lucide-react";
+// shared UI
+import { sidebarItems } from "@/constants/sidebar";
+import { cn } from "@/libs/utils";
+import Logo from "../../Logo";
+import { useLogout } from "@/hooks/useAuth";
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -13,6 +18,8 @@ interface SidebarProps {
 
 export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
   const pathname = usePathname();
+  const logout = useLogout();
+
   return (
     <motion.aside
       animate={{ width: isCollapsed ? 73 : 280 }}
@@ -93,10 +100,10 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
         })}
       </nav>
       {/* aside footer */}
-      <div className="p-3 border-t border-secondary">
+      <div className="p-3 border-t border-secondary space-y-1">
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="w-full h-12 rounded-xl flex items-center group"
+          className="w-full h-12 rounded-xl flex items-center group px-3"
         >
           <motion.div
             animate={{ rotate: isCollapsed ? 180 : 0 }}
@@ -112,6 +119,23 @@ export default function Sidebar({ isCollapsed, setIsCollapsed }: SidebarProps) {
               className="ml-4 flex-1 text-left"
             >
               Collapse
+            </motion.div>
+          )}
+        </button>
+        <button
+          onClick={logout}
+          className="w-full h-12 rounded-xl flex items-center group px-3"
+        >
+          <motion.div className="size-8 flex items-center justify-center">
+            <LogOut className="size-6 text-logo" />
+          </motion.div>
+          {!isCollapsed && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="ml-4 flex-1 text-left"
+            >
+              Logout
             </motion.div>
           )}
         </button>
