@@ -40,18 +40,19 @@ export const useStudentLogin = () => {
 
   const { isPending, mutate: login } = useMutation({
     mutationFn: loginStudent,
-    onSuccess: (res) => {
-      // save token to cookies
+    onSuccess: async (res) => {
+      // Set cookies
       Cookies.set("token", res.data.token, {
         expires: 7,
         path: "/",
-        sameSite: "strict",
+        sameSite: "lax",
         secure: process.env.NODE_ENV === "production",
       });
-      // save token to localstorage
-      localStorage.setItem("token", res.data.token);
-      // fresh fetch using the new token
-      queryClient.invalidateQueries({ queryKey: ["student-info"] });
+
+      await queryClient.refetchQueries({
+        queryKey: ["student-info"],
+      });
+      // Toast and then redirect
       toast.success(res.message || "Login successfully!");
       router.push("/dashboard");
     },
@@ -99,7 +100,6 @@ export const useLogout = () => {
 
   const logout = () => {
     Cookies.remove("token");
-    localStorage.removeItem("token");
     queryClient.clear();
 
     router.push("/auth/signin");
