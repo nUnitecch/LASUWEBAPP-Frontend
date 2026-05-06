@@ -101,7 +101,7 @@ export default function SignupPage() {
               <Button
                 type="button"
                 onClick={handleNext}
-                className="flex-1 h-11 rounded-xl bg-logo hover:bg-logo/90 transition-all"
+                className="flex-1 h-11 rounded-xl bg-logo hover:bg-logo/90 transition-all cursor-pointer"
               >
                 Continue <ArrowRight className="ml-2 size-4" />
               </Button>
@@ -109,7 +109,7 @@ export default function SignupPage() {
               <Button
                 type="submit"
                 disabled={isPending}
-                className="flex-1 h-11 rounded-xl bg-logo"
+                className="flex-1 h-11 rounded-xl bg-logo cursor-pointer"
               >
                 {isPending ? <Loader2 className="animate-spin mr-2" /> : null}
                 {isPending ? "Creating..." : "Submit"}

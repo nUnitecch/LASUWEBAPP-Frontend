@@ -108,7 +108,7 @@ export default function LoginPage() {
             <Link href="/auth/signup" className="block">
               <Button
                 variant="outline"
-                className="w-full h-12 rounded-xl border-border hover:bg-secondary"
+                className="w-full h-12 rounded-xl border-border hover:bg-secondary cursor-pointer"
               >
                 Create a Student Account
               </Button>

@@ -4,8 +4,6 @@ import type { NextRequest } from "next/server";
 export function proxy(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
 
-  console.log(token);
-
   const isDashboardPage = request.nextUrl.pathname.startsWith("/dashboard");
   const isAuthPage = request.nextUrl.pathname.startsWith("/auth");
 
