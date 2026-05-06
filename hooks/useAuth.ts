@@ -20,7 +20,14 @@ export const useStudentRegistration = () => {
       // router.push(`/auth/verify?email=${email}`);
     },
     onError: (error: any) => {
-      toast.error(error.message || "Registration failed. Try again.");
+      let errorMessage = "Registration failed. Try again.";
+      if (error.error) {
+        errorMessage = error.error.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      toast.error(errorMessage);
     },
   });
 
