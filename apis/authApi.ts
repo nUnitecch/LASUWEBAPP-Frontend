@@ -1,7 +1,51 @@
-import { StudentLoginData, StudentRegistrationData } from "@/types/auth.types";
+import {
+  AdminLoginPayloadType,
+  AdminRegistrationPayloadType,
+  StudentLoginData,
+  StudentRegistrationData,
+} from "@/types/auth.types";
 import axios from "axios";
 
 export const BASE_API = process.env.NEXT_PUBLIC_BACKEND_BASE_API as string;
+
+async function registerAdmin(
+  payload: AdminRegistrationPayloadType,
+): Promise<void> {
+  try {
+    const response = await axios.post(
+      `${BASE_API}/api/v1/admin/register`,
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    return response.data;
+  } catch (error: any) {
+    const message =
+      error.response?.data?.message || "Error creating admin account";
+    throw new Error(message);
+  }
+}
+
+async function loginAdmin(payload: AdminLoginPayloadType): Promise<void> {
+  try {
+    const response = await axios.post(
+      `${BASE_API}/api/v1/admin/login`,
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    return response.data;
+  } catch (error: any) {
+    const message = error.response.data.message || "Failed to login as admin";
+    throw new Error(message);
+  }
+}
 
 async function registerStudent(
   credentials: StudentRegistrationData,
@@ -18,7 +62,8 @@ async function registerStudent(
     );
     return response.data;
   } catch (error: any) {
-    const message = error.response?.data?.message || "Error creating account";
+    const message =
+      error.response?.data?.message || "Error creating student account";
     throw new Error(message);
   }
 }
@@ -77,4 +122,11 @@ async function resetPassword({
   }
 }
 
-export { registerStudent, loginStudent, forgetPassword, resetPassword };
+export {
+  registerStudent,
+  loginStudent,
+  forgetPassword,
+  resetPassword,
+  loginAdmin,
+  registerAdmin,
+};
