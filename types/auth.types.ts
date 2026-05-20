@@ -1,3 +1,23 @@
+export type AdminRegistrationPayloadType = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+};
+
+export type AdminLoginPayloadType = {
+  email: string;
+  password: string;
+};
+
+export type InvitedAdminFormData = {
+  firstname: string;
+  lastname: string;
+  password: string;
+  phoneNumber: string;
+};
+
 export type StudentRegistrationData = {
   firstName: string;
   lastName: string;

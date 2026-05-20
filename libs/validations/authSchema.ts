@@ -1,5 +1,60 @@
 import { z } from "zod";
 
+export const adminRegistrationSchema = z.object({
+  firstname: z.string().trim().min(1, "Firstname is required!"),
+  lastname: z.string().trim().min(1, "Lastname is required!"),
+  email: z.email("Invalid email address").trim(),
+  password: z
+    .string()
+    .trim()
+    .min(1, "Password is required")
+    .min(8, "Password must be at least 8 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/\d/, "Password must contain at least one number"),
+  phoneNumber: z
+    .string()
+    .trim()
+    .min(1, "Phone number is required")
+    .min(10, "Invalid phone number")
+    .regex(/^[\d\s+()-]+$/, "Invalid phone number format"),
+});
+
+export const adminLoginSchema = z.object({
+  email: z.email("Invalid email address").trim(),
+  password: z
+    .string()
+    .trim()
+    .min(1, "Password is required")
+    .min(8, "Password must be at least 8 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/\d/, "Password must contain at least one number"),
+});
+
+export const invitedAdminSchema = z.object({
+  firstname: z.string().trim().min(1, "Firstname is required!"),
+  lastname: z.string().trim().min(1, "Lastname is required!"),
+  password: z
+    .string()
+    .trim()
+    .min(1, "Password is required")
+    .min(8, "Password must be at least 8 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/\d/, "Password must contain at least one number"),
+  phoneNumber: z
+    .string()
+    .trim()
+    .min(1, "Phone number is required")
+    .min(10, "Invalid phone number")
+    .regex(/^[\d\s+()-]+$/, "Invalid phone number format"),
+});
+
+// ===================
+// STUDENT AUTH SCHEMA
+// ===================
+
 export const signupSchema = z
   .object({
     fullname: z
@@ -68,7 +123,7 @@ export const signupSchema = z
   });
 
 export const signinSchema = z.object({
-  email: z.email("Invalid email"),
+  email: z.email("Invalid email").trim(),
   password: z
     .string()
     .trim()
@@ -100,6 +155,12 @@ export const forgotPasswordSchema = z.object({
   email: z.email("Invalid email address").trim(),
 });
 
+// ADMIN SCHEMA TYPES
+export type AdminRegistrationFormData = z.infer<typeof adminRegistrationSchema>;
+export type AdminLoginFormData = z.infer<typeof adminLoginSchema>;
+export type InvitedAdminFormData = z.infer<typeof invitedAdminSchema>;
+
+// STUDENT SCHEMA TYPES
 export type SignupFormData = z.infer<typeof signupSchema>;
 export type SigninFormData = z.infer<typeof signinSchema>;
 export type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;

@@ -1,13 +1,34 @@
-import {
-  forgetPassword,
-  loginStudent,
-  registerStudent,
-  resetPassword,
-} from "@/apis/authApi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
+import {
+  forgetPassword,
+  loginAdmin,
+  loginStudent,
+  registerStudent,
+  resetPassword,
+} from "@/apis/authApi";
+
+export const useAdminLogin = () => {
+  const { isPending, mutate: adminLogin } = useMutation({
+    mutationFn: loginAdmin,
+    onSuccess: () => {
+      toast.success("Admin account created successfully!");
+    },
+    onError: (error: any) => {
+      let errorMessage = "Registration failed. Try again.";
+      if (error.error) {
+        errorMessage = error.error.message;
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      toast.error(errorMessage);
+    },
+  });
+
+  return { isPending, adminLogin };
+};
 
 export const useStudentRegistration = () => {
   const router = useRouter();
@@ -26,7 +47,7 @@ export const useStudentRegistration = () => {
       } else if (error.message) {
         errorMessage = error.message;
       }
-      
+
       toast.error(errorMessage);
     },
   });

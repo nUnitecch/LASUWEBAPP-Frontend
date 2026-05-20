@@ -3,9 +3,18 @@ import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
+  const { pathname } = request.nextUrl;
 
-  const isDashboardPage = request.nextUrl.pathname.startsWith("/dashboard");
-  const isAuthPage = request.nextUrl.pathname.startsWith("/auth");
+  const isDashboardPage = pathname.startsWith("/dashboard");
+  const isAuthPage = pathname.startsWith("/auth");
+
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api") ||
+    pathname.includes(".")
+  ) {
+    return NextResponse.next();
+  }
 
   if (isDashboardPage && !token) {
     return NextResponse.redirect(new URL("/auth/signin", request.url));
@@ -21,3 +30,4 @@ export function proxy(request: NextRequest) {
 export const config = {
   matcher: ["/dashboard/:path*", "/auth/:path*"],
 };
+
